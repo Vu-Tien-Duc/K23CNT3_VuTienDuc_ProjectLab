@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 Vu Tien Duc
 22/11: 	Đã cài đặt thành công các ứng dụng như git,composer,laravel
+=======
+heelo
+>>>>>>> Đã cài đặt thành công các ứng dụng như git,composer,laravel
