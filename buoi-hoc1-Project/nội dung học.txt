@@ -1,0 +1,10 @@
+Đã Tải được git , composer và php.
+Biết 1 chút về việc sử dụng GitHub:
+	git clone "link GitHub": lấy dữ liệu từ GitHub về máy
+
+	
+	git add .
+	git commit -m "" 
+	git push : 3 lệnh này dùng để gửi bài làm của mình lên GitHub 
+
+	git pull để update dữ liệu từ GitHub về máy
