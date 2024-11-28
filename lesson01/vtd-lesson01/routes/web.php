@@ -137,3 +137,5 @@ Route::get('/account-show',[AccountController::class,'showDaTa'])->name('account
 Route::get('/account-list',[AccountController::class,'list'])->name('account.list');
 
 Route::get('/account-getallaccount',[AccountController::class,'getallaccount'])->name('account.getallaccount');
+
+route::get('/vtd-list',[AccountController::class,'vtdlist'])->name('vtd.list');

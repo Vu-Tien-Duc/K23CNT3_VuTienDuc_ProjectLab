@@ -21,7 +21,7 @@ class AccountController extends Controller
     public function showDaTa()
     {
         $data = array('10112005','Vu-Tien-Duc');
-        return view('account-show',compact('data'));
+        return view('account-show',['data'=>$data]);
     }
     // account-lít
     public function list()
@@ -30,7 +30,7 @@ class AccountController extends Controller
             ["id"=>1,"username"=>"VuDuc","password"=>"ducybyb","fullname"=>"Vũ Tiến Đức"],
             ["id"=>2,"username"=>"Devmaster","password"=>"@master1822","fullname"=>"Master Dev 12"]
         );
-        return view('account-list', compact('data'));
+        return view('account-list',['list'=>$data]);
     }
 
     // get database
@@ -41,4 +41,13 @@ class AccountController extends Controller
             return view('account-getall', compact('data'));
     }
     
+
+    public function vtdlist()
+    {
+        $data = array(
+            ["id"=>1,"Name"=>"Vũ Tiến Đức","password"=>"1234a@"],
+            ["id"=>2,"Name"=>"Vũ Tiến Anh","password"=>"1294a@"]
+        );
+        return view('vtd-account-list',['list'=>$data]);
+    }
 }
