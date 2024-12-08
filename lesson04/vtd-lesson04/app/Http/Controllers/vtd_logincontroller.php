@@ -8,7 +8,7 @@ class vtd_logincontroller extends Controller
 {
     public function index()
 {
-return view('login');
+return view('vtd-login');
 }
 public function loginSubmit(Request $request)
 {
