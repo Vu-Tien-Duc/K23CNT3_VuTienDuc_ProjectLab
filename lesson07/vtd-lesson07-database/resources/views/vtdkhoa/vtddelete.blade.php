@@ -31,7 +31,7 @@
                         </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary mx-2">SUbmit</button>
+                <button class="btn btn-primary mx-2">Xoas</button>
                 <a href="/khoa" class="btn btn-primary">Back</a>
             </div>
         </div>

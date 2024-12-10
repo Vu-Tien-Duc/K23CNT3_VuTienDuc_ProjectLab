@@ -9,14 +9,15 @@
 <body>
     <section class="container border my-3">
         <h1>Danh Sách Koa</h1>
-        <button class="btn btn-primary mx-2"><a href="/khoa/create" class="text-white">Thêm Mới</a></button>
+        <button class="btn btn-primary mx-2"><a href="/monhoc/create" class="text-white">Thêm Mới</a></button>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Mã Khoa</th>
-                    <th>Tên Khoa</th>
+                    <th>Mã Môn Học</th>
+                    <th>Tên Môn Học</th>
+                    <th>Số Tiết</th>
                     <th>Chức Năng</th>
                 </tr>
             </thead>
@@ -24,27 +25,29 @@
                 @php
                 $stt=0;
                 @endphp
-                @foreach ($vtdkhoas as $item)
+                @foreach ($vtdmonhoc as $item)
                 @php
                     $stt++;   
                 @endphp
                     <tr>
                         <td>{{$stt}}</td>
-                        <td>{{$item->VTDMAKHOA}} </td>
-                        <td>{{$item->VTDTENKHOA}}</td>
+                        <td>{{$item->VTDMAMONHOC}} </td>
+                        <td>{{$item->VTDTENMONHOC}}</td>
+                        <td>{{$item->VTDSOTIET}}</td>
                         
                         <td class="text-center">
-                        <a href="/khoa/detail/{{$item->VTDMAKHOA}}" class="btn btn-success">
+                        <a href="/monhoc/detail/{{$item->VTDMAMONHOC}}" class="btn btn-success">
                         Chi tiết</a>
-                        <a href="/khoa/edit/{{$item->VTDMAKHOA}}" class="btn btn-primary">
+                        <a href="/monhoc/edit/{{$item->VTDMAMONHOC}}" class="btn btn-primary">
                         Sửa</a>
                         {{-- Form xóa khoa --}}
-                        <form action="{{ route('khoa.vtdDeleteSubmit') }}" method="POST" style="display:inline;">
+                        {{-- Form xóa khoa --}}
+                       {{-- <form action="{{ route('khoa.vtdDeleteSubmit') }}" method="POST" style="display:inline;">
                             @csrf
                             @method('POST')
                             <input type="hidden" name="VTDMAKHOA" value="{{ $item->VTDMAKHOA }}">
                             <button type="submit" class="btn btn-danger " onclick="return confirm('Bạn có chắc chắn muốn xóa khoa này?')">Xóa</button>
-                        </form> 
+                        </form> --}}
 
                     </tr>
                 @endforeach

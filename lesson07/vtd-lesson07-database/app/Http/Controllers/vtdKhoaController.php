@@ -47,16 +47,17 @@ class vtdKhoaController extends Controller
     }
 
     public function vtdDeleteSubmit(Request $request)
-    {
-        // Retrieve the data from the form
-        $makhoa = $request->input('VTDMAKHOA');
+{
+    // Lấy mã khoa cần xóa từ form
+    $makhoa = $request->input('VTDMAKHOA');
     
-        // Perform the delete operation using the correct SQL syntax
-        DB::delete("DELETE FROM  vtdkhoa WHERE VTDMAKHOA = ?", [$makhoa]);
+    // Xóa khoa khỏi bảng
+    DB::delete('DELETE FROM vtdkhoa WHERE VTDMAKHOA = ?', [$makhoa]);
     
-        // Redirect to the '/khoa' route
-        return redirect('/khoa');
-    }
+    // Chuyển hướng về trang danh sách khoa
+    return redirect()->route('khoas.vtdGetAllKhoa')->with('success', 'Khoa đã được xóa thành công!');
+}
+
     
 
     // Create Form

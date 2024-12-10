@@ -42,3 +42,17 @@ Route::post('/khoa/delete',
 Route::get('/khoa/create', [vtdKhoaController::class, 'vtdCreate'])->name('khoa.vtdCreate');
 // Route POST để xử lý submit form tạo mới khoa
 Route::post('/khoa/create', [vtdKhoaController::class, 'vtdCreateSubmit'])->name('khoa.vtdCreateSubmit');
+
+
+
+// monhoc
+use App\Http\Controllers\vtdmonhocController;
+Route::get('/monhoc',[vtdmonhocController::class,'vtdGetAllMonhoc'])->name('khoa.vtdGetAllMonhoc');
+// khoa detail
+Route::get('/monhoc/detail/{makh}',
+[vtdmonhocController::class,'tvcGetMonhoc'])->name('monhoc.tvcGetMonhoc');
+//create
+// Route GET để hiển thị form tạo mới monhoc
+Route::get('/monhoc/create', [vtdmonhocController::class, 'vtdCreate'])->name('monhoc.vtdCreate');
+// Route POST để xử lý submit form tạo mới monhoc
+Route::post('/monhoc/create', [vtdmonhocController::class, 'vtdCreateSubmit'])->name('monhoc.vtdCreateSubmit');
