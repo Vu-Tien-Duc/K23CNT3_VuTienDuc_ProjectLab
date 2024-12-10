@@ -17,22 +17,23 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="vtdemail@gmail.com">
                         @error("email")
                         <span class="text-danger">{{$message}}</span>
                         @enderror
-    
+                        <span id="email-error">
+                        </span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="password">password:</label>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password:</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="xxx">
                         @error("password")
                         <span class="text-danger">{{$message}}</span>
                         @enderror
-    
+                      
                     </div>
                 </div>
 
@@ -42,11 +43,8 @@
                     @if(Session::has('vtd-error'))
                     <div class="alert alert-danger">
                         {{Session::get('vtd-error')}}
-
                     </div>
-                    @endif
-
-                    
+                    @endif   
                 </div>
             </div>
         </form>
