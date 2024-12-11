@@ -20,20 +20,29 @@
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="mamonhoc">Mã monhoc</span>
                         <!-- Đảm bảo trường này có tên "mamonhoc" để controller nhận đúng -->
-                        <input type="text" class="form-control" aria-describedby="mamonhoc" name="mamonhoc" value="" required>
+                        <input type="text" class="form-control" aria-describedby="mamonhoc" name="mamonhoc" value="" >
+                        @error('mamonhoc')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="tenmonhoc">Tên monhoc</span>
                         <!-- Đảm bảo trường này có tên "tenmonhoc" để controller nhận đúng -->
-                        <input type="text" class="form-control" aria-describedby="tenmonhoc" name="tenmonhoc" value="" required>
+                        <input type="text" class="form-control" aria-describedby="tenmonhoc" name="tenmonhoc" value="" >
+                        @error('tenmonhoc')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
 
                     
                     <div class="input-group input-group-sm mb-3">
                         <span class="input-group-text" id="sotiet">Số Tiết</span>
                         <!-- Đảm bảo trường này có tên "tenmonhoc" để controller nhận đúng -->
-                        <input type="number" class="form-control" aria-describedby="sotiet" name="sotiet" value="" required>
+                        <input type="number" class="form-control" aria-describedby="sotiet" name="sotiet" value="" >
+                        @error('sotiet')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                     </div>
 
                     <div class="card-footer">

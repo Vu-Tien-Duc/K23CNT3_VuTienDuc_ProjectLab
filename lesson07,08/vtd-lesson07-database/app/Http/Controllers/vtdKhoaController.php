@@ -42,21 +42,10 @@ class vtdKhoaController extends Controller
 
     public function vtdDelete($makhoa)
     {
-        $khoa = DB::select("select * from vtdkhoa where vtdmakhoa=?",[$makhoa])[0];
-        return view('vtdkhoa.vtddelete',['khoa'=>$khoa]);
+        $khoa = DB::delete('delete from vtdkhoa where VTDMAKHOA =?',[$makhoa]);
+        return redirect('/khoa');
     }
 
-    public function vtdDeleteSubmit(Request $request)
-{
-    // Lấy mã khoa cần xóa từ form
-    $makhoa = $request->input('VTDMAKHOA');
-    
-    // Xóa khoa khỏi bảng
-    DB::delete('DELETE FROM vtdkhoa WHERE VTDMAKHOA = ?', [$makhoa]);
-    
-    // Chuyển hướng về trang danh sách khoa
-    return redirect()->route('khoas.vtdGetAllKhoa')->with('success', 'Khoa đã được xóa thành công!');
-}
 
     
 
@@ -70,17 +59,33 @@ class vtdKhoaController extends Controller
     // Xử lý form tạo mới khoa
    // CreateSubmit
    public function vtdCreateSubmit(Request $request)
-   {
-       // Lấy dữ liệu từ form thông qua request
-       $makhoa = $request->input('makhoa');  // Mã khoa
-       $tenkhoa = $request->input('tenkhoa');  // Tên khoa
+{
+    // Validate the request data
+    $request->validate([
+        'VTDMAKHOA' => 'required|max:2',
+        'VTDTENKHOA' => 'required|max:50'
+    ], [
+        'VTDMAKHOA.required' => 'Vui lòng nhập mã khoa',
+        'VTDMAKHOA.max' => 'Mã khoa chỉ được tối đa 2 ký tự',
+        'VTDTENKHOA.required' => 'Vui lòng nhập tên khoa',
+        'VTDTENKHOA.max' => 'Tên khoa chỉ được tối đa 50 ký tự',
+    ]);
    
-       // Chèn dữ liệu vào bảng vtdkhoa
-       DB::insert('insert into vtdkhoa (VTDMAKHOA, VTDTENKHOA) values (?, ?)', [$makhoa, $tenkhoa]);
+    // Retrieve the form data from the request
+    $makhoa = $request->input('VTDMAKHOA');
+    $tenkhoa = $request->input('VTDTENKHOA');
+
+    // Insert the data into the vtdkhoa table
+    DB::table('vtdkhoa')->insert([
+        'VTDMAKHOA' => $makhoa,
+        'VTDTENKHOA' => $tenkhoa
+    ]);
    
-       // Sau khi chèn thành công, chuyển hướng về trang khoa
-       return redirect('/khoa');
-   }
+    // Redirect to the /khoa page after success
+    return redirect('/khoa')->with('success', 'Tạo mới khoa thành công!');
+}
+
+   
         
 
 }

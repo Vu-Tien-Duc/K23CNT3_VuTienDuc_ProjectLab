@@ -6,9 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 <body>
     <section class="container border my-3">
-        <h1>Danh Sách Koa</h1>
+        <h1>Danh Sách Mon Học</h1>
         <button class="btn btn-primary mx-2"><a href="/monhoc/create" class="text-white">Thêm Mới</a></button>
 
         <table class="table table-bordered">
@@ -36,18 +37,20 @@
                         <td>{{$item->VTDSOTIET}}</td>
                         
                         <td class="text-center">
-                        <a href="/monhoc/detail/{{$item->VTDMAMONHOC}}" class="btn btn-success">
-                        Chi tiết</a>
-                        <a href="/monhoc/edit/{{$item->VTDMAMONHOC}}" class="btn btn-primary">
-                        Sửa</a>
-                        {{-- Form xóa khoa --}}
-                        {{-- Form xóa khoa --}}
-                       {{-- <form action="{{ route('khoa.vtdDeleteSubmit') }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('POST')
-                            <input type="hidden" name="VTDMAKHOA" value="{{ $item->VTDMAKHOA }}">
-                            <button type="submit" class="btn btn-danger " onclick="return confirm('Bạn có chắc chắn muốn xóa khoa này?')">Xóa</button>
-                        </form> --}}
+                            <a href="/monhoc/detail/{{$item->VTDMAMONHOC}}" class="btn btn-success">
+                                <i class="fa-solid fa-eye-low-vision"></i></a>
+                            <a href="/monhoc/edit/{{$item->VTDMAMONHOC}}" class="btn btn-primary">
+                                <i class="fa-solid fa-pen"></i></a>
+                            {{-- Form xóa monhoc --}}
+                            <a href="/monhoc/delete/{{$item->VTDMAMONHOC}}" class="btn btn-danger"
+                                onclick="return confirm('Bạn muốn xóa môn học không? Mã: ' + '{{$item->VTDMAMONHOC}}');">
+                                <i class="fa-regular fa-trash-can"></i> Xóa
+                             </a>
+                             
+                            </td>
+
+                            
+    
 
                     </tr>
                 @endforeach
@@ -57,6 +60,11 @@
                     </div>
                 @endif
             </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5"><h3>Tổng Số Môn Học {{$vtdmonhoc->count()}}</h3></th>
+                </tr>
+            </tfoot>
         </table>
     </section>
 </body>

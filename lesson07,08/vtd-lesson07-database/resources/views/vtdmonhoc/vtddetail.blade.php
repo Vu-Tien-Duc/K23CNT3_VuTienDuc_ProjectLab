@@ -12,7 +12,9 @@
     <section class="container my-3">
         <div class="card">
             <div class="card-header">
-                <h3>Thông tin chi tiết monhoc</h3>
+                <h3>Thông Tin Chi Tiết Môn học</h3>
+                <br>
+                <h2>Môn Học:    {{$vtdmonhoc->VTDTENMONHOC}}</h2>
             </div>
             <div class="card-body">
             <p class="card-text">

@@ -32,8 +32,7 @@ Route::post('/khoa/edit',
 //delete
 Route::get('/khoa/delete/{makh}',
 [vtdKhoaController::class,'vtdDelete'])->name('khoa.vtdDelete');
-Route::post('/khoa/delete',
-[vtdKhoaController::class,'vtdDeleteSubmit'])->name('khoa.vtdDeleteSubmit');
+
 
 
 // create
@@ -56,3 +55,11 @@ Route::get('/monhoc/detail/{makh}',
 Route::get('/monhoc/create', [vtdmonhocController::class, 'vtdCreate'])->name('monhoc.vtdCreate');
 // Route POST để xử lý submit form tạo mới monhoc
 Route::post('/monhoc/create', [vtdmonhocController::class, 'vtdCreateSubmit'])->name('monhoc.vtdCreateSubmit');
+
+
+## sửa thông tin môn học
+Route::get('/monhoc/edit/{mamonhoc}',[vtdmonhocController::class,'vtdedit'])->name('monhoc.vtdedit');
+Route::post('/monhoc/edit',[vtdmonhocController::class,'vtdeditSubmit'])->name('monhoc.vtdeditSubmit');
+
+## Xóa thông tin môn học
+Route::get('/monhoc/delete/{mamonhoc}',[vtdmonhocController::class,'vtddelete'])->name('monhoc.vtddelete');

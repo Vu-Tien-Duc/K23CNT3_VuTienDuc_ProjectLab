@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 <body>
     <section class="container border my-3">
         <h1>Danh Sách Koa</h1>
@@ -35,16 +36,15 @@
                         
                         <td class="text-center">
                         <a href="/khoa/detail/{{$item->VTDMAKHOA}}" class="btn btn-success">
-                        Chi tiết</a>
+                            <i class="fa-solid fa-eye-low-vision"></i></a>
                         <a href="/khoa/edit/{{$item->VTDMAKHOA}}" class="btn btn-primary">
-                        Sửa</a>
+                            <i class="fa-solid fa-pen"></i></a>
                         {{-- Form xóa khoa --}}
-                        <form action="{{ route('khoa.vtdDeleteSubmit') }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('POST')
-                            <input type="hidden" name="VTDMAKHOA" value="{{ $item->VTDMAKHOA }}">
-                            <button type="submit" class="btn btn-danger " onclick="return confirm('Bạn có chắc chắn muốn xóa khoa này?')">Xóa</button>
-                        </form> 
+                        <a href="/khoa/delete/{{$item->VTDMAKHOA}}" class="btn btn-danger"
+
+                            onclick="return confirm('Bạn muốn xóa không?');">
+                            <i class="fa-regular fa-trash-can"></i> </a>
+                        </td>
 
                     </tr>
                 @endforeach

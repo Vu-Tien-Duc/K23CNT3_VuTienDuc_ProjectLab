@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Thông tin chi tiết khoa</title>
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
     <section class="container my-3">
@@ -17,18 +16,25 @@
             <div class="card-body">
                 <form action="{{ route('khoa.vtdCreateSubmit') }}" method="POST">
                     @csrf
+                    <!-- Mã khoa input field -->
                     <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text" id="MaKH">Mã khoa</span>
-                        <!-- Đảm bảo trường này có tên "makhoa" để controller nhận đúng -->
-                        <input type="text" class="form-control" aria-describedby="MaKH" name="makhoa" value="" required>
+                        <span class="input-group-text" id="VTDMAKHOA">Mã khoa</span>
+                        <input type="text" class="form-control" aria-describedby="VTDMAKHOA" name="VTDMAKHOA" value="{{ old('VTDMAKHOA') }}" required>
+                        @error('VTDMAKHOA')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
+                    <!-- Tên khoa input field -->
                     <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text" id="TenKH">Tên khoa</span>
-                        <!-- Đảm bảo trường này có tên "tenkhoa" để controller nhận đúng -->
-                        <input type="text" class="form-control" aria-describedby="TenKH" name="tenkhoa" value="" required>
+                        <span class="input-group-text" id="VTDTENKHOA">Tên khoa</span>
+                        <input type="text" class="form-control" aria-describedby="VTDTENKHOA" name="VTDTENKHOA" value="{{ old('VTDTENKHOA') }}" required>
+                        @error('VTDTENKHOA')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
+                    <!-- Submit button and Back button -->
                     <div class="card-footer">
                         <input type="submit" class="btn btn-primary" name="btnSubmit" value="Thêm mới">
                         <a href="/khoa" class="btn btn-secondary">Trở lại</a>
