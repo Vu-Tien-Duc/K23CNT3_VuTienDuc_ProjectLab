@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Khoa     ////////////////////////////////////////////////////////////////////////////
 use App\Http\Controllers\vtdKhoaController;
 Route::get('/khoa',[vtdKhoaController::class,'vtdGetAllKhoa'])->name('khoas.vtdGetAllKhoa');
 // khoa detail
@@ -44,7 +46,7 @@ Route::post('/khoa/create', [vtdKhoaController::class, 'vtdCreateSubmit'])->name
 
 
 
-// monhoc
+// monhoc   ////////////////////////////////////////////////////////////////////////////
 use App\Http\Controllers\vtdmonhocController;
 Route::get('/monhoc',[vtdmonhocController::class,'vtdGetAllMonhoc'])->name('khoa.vtdGetAllMonhoc');
 // khoa detail
@@ -63,3 +65,19 @@ Route::post('/monhoc/edit',[vtdmonhocController::class,'vtdeditSubmit'])->name('
 
 ## Xóa thông tin môn học
 Route::get('/monhoc/delete/{mamonhoc}',[vtdmonhocController::class,'vtddelete'])->name('monhoc.vtddelete');
+
+//Sinh viên ////////////////////////////////////////////////////////////////////////////
+use App\Http\Controllers\vtdsinhvienController;
+Route::get('/sinhvien',[vtdsinhvienController::class,'GetAllSinhVien'])->name('sinhvien.GetAllSinhVien');
+# Hiển Thị Thông tin sinh vien
+Route::get('/sinhvien/detail/{masinhvien}',[vtdsinhvienController::class,'vtdGetSinhvien'])->name('sinhvien.vtdGetSinhvien');
+//create
+// Route GET để hiển thị form tạo mới sinhvien
+Route::get('/sinhvien/create', [vtdsinhvienController::class, 'vtdCreate'])->name('sinhvien.vtdCreate');
+// Route POST để xử lý submit form tạo mới sinhvien
+Route::post('/sinhvien/create', [vtdsinhvienController::class, 'vtdCreateSubmit'])->name('sinhvien.vtdCreateSubmit');
+## sửa thông tin sinh viên
+Route::get('/sinhvien/edit/{masinhvien}',[vtdsinhvienController::class,'vtdEdit'])->name('sinhvien.vtdEdit');
+Route::post('/sinhvien/edit',[vtdsinhvienController::class,'vtdEditSubmit'])->name('sinhvien.vtdEditSubmit');
+## Xóa thông tin sinh viên
+Route::get('/sinhvien/delete/{masinhvien}',[vtdsinhvienController::class,'vtddelete'])->name('sinhvien.vtddelete');
