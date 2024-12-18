@@ -49,3 +49,20 @@ Route::post('/vtdvattu/create',[vtdVatTuControler::class,'vtdcreatesubmit'])->na
 Route::get('vtdvattu/delete/{mavattu}',[vtdVatTuControler::class,'vtddelete'])->name('vtdvattu.vtddelete');
 
 
+// pxuat
+use App\Http\Controllers\vtdpxuatController;
+Route::get('/vtdpxuat',[vtdpxuatController::class,'vtdlist'])->name('vtdpxuat.vtdlist');
+//chi tiet
+Route::get('/vtdpxuat/detail/{mavattu}',[vtdpxuatController::class,'vtddetail'])->name('vtdpxuat.vtddetail');
+
+// edit
+Route::get('/vtdpxuat/edit/{mavattu}',[vtdpxuatController::class,'vtdedit'])->name('vtdpxuat.vtdedit');
+Route::post('/vtdpxuat/edit/{mavattu}',[vtdpxuatController::class,'vtdeditsubmit'])->name('vtdpxuat.vtdeditsubmit');
+// create
+Route::get('/vtdpxuat/create',[vtdpxuatController::class,'vtdcreate'])->name('vtdpxuat.vtdcreate');
+Route::post('/vtdpxuat/create',[vtdpxuatController::class,'vtdcreatesubmit'])->name('vtdpxuat.vtdcreatesubmit');
+
+// delete
+Route::get('vtdpxuat/delete/{mavattu}',[vtdpxuatController::class,'vtddelete'])->name('vtdpxuat.vtddelete');
+
+
