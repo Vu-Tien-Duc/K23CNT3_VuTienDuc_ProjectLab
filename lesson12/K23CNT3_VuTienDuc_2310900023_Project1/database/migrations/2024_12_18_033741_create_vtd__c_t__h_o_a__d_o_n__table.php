@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('vtd_CT_HOA_DON', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('vtdHoaDonID')->references('id')->on('vtd_HOA_DON');
-            $table->bigInteger('vtdSanPhamD')->references('id')->on('vtd_SAN_PHAM');
+            $table->bigInteger('vtdSanPhamID')->references('id')->on('vtd_SAN_PHAM');
             $table->integer('vtdSoLuongMua');
             $table->float('vtdDonGiaMua');
-            $table->float('vtdThanhTien');
+            $table->double('vtdThanhTien');
             $table->tinyInteger('vtdTrangThai');
             $table->timestamps();
         });

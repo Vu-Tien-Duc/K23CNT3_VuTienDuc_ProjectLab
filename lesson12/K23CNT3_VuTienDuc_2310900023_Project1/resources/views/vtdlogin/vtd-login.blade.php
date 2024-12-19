@@ -1,185 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(#141e30, #243b55);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
+        body {
+            background: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
 
-      .wrap {
-        width: 400px;
-        padding: 40px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 10px;
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
-        box-sizing: border-box;
-      }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
 
-      .wrap h1 {
-        text-transform: uppercase;
-        color: #fff;
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 24px;
-      }
+        .login-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
 
-      .wrap .user-box {
-        position: relative;
-        margin-bottom: 20px;
-      }
+        .form-label {
+            color: #333;
+            font-weight: 600;
+        }
 
-      .wrap input {
-        width: 100%;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #fff;
-        border: none;
-        border-bottom: 1px solid #fff;
-        outline: none;
-        background: transparent;
-        transition: 0.3s;
-      }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: none;
+            font-size: 16px;
+            padding: 12px;
+        }
 
-      .wrap .user-box label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #fff;
-        pointer-events: none;
-        transition: 0.3s;
-      }
+        .form-control:focus {
+            border-color: #0069d9;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
 
-      .wrap .user-box input:focus ~ label,
-      .wrap .user-box input:valid ~ label {
-        top: -20px;
-        left: 0;
-        color: aqua;
-        font-size: 12px;
-      }
+        .btn-primary {
+            background-color: #0069d9;
+            border-color: #0062cc;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            transition: 0.3s;
+        }
 
-      .wrap .login {
-        width: 100%;
-        padding: 10px 20px;
-        color: #fff;
-        font-size: 16px;
-        text-transform: uppercase;
-        background: #243b55;
-        border: none;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 20px;
-      }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
 
-      .wrap .login:hover {
-        background: aqua;
-        color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 5px aqua, 0 0 25px aqua, 0 0 50px aqua;
-      }
+        .forgot-password {
+            text-align: right;
+            margin-top: 10px;
+        }
 
-      .wrap a {
-        display: block;
-        text-align: center;
-        margin-top: 15px;
-        text-decoration: none;
-        color: rgb(132, 255, 255);
-        transition: 0.3s;
-      }
+        .forgot-password a {
+            color: #0069d9;
+            text-decoration: none;
+        }
 
-      .wrap a:hover {
-        text-decoration: underline;
-        color: #fff;
-      }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
 
-      /* Căn chỉnh "Remember me" và checkbox cùng "Forgot password?" trên cùng một dòng */
-      .wrap .remember-forgot {
-        display: flex;
-        justify-content: space-between; /* Để chúng cách nhau */
-        align-items: center;
-        color: #fff;
-        margin-top: 20px;
-        flex-wrap: nowrap;  /* Đảm bảo chúng không bị xuống dòng */
-      }
+        /* Add custom background for the page */
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
 
-      /* Căn chỉnh checkbox và "Remember me" trên cùng một dòng */
-      .wrap .remember {
-        display: flex;  /* Dùng flexbox để checkbox và "Remember me" nằm cùng dòng */
-        align-items: center;
-      margin-top: 10px;
-        margin-right: 10px; /* Thêm khoảng cách giữa checkbox và label */
-      }
-
-      .wrap .remember input {
-        margin-right: 8px;  /* Khoảng cách giữa checkbox và label */
-      }
-
-      /* Căn chỉnh "Forgot password?" */
-      .wrap .forget {
-        text-decoration: none;
-        color: rgb(132, 255, 255);
-        margin-left: 10px;  /* Khoảng cách giữa "Remember me" và "Forgot password?" */
-      }
-
-      .wrap .forget:hover {
-        color: #fff;
-        text-decoration: underline;
-      }
-
-      .wrap .next {
-        display: inline-block;
-        color: #fff;
-        text-decoration: none;
-        margin-top: 20px;
-        text-align: center;
-      }
-
-      .wrap .next:hover {
-        text-decoration: underline;
-        color: aqua;
-      }
+        /* Custom padding for input fields */
+        .mb-3 {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
+
 <body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="login-container">
+            <h1>Login Quản Trị Hệ Thống</h1>
+            <form action="{{ route('admins.vtdLoginSubmit') }}" method="POST">
+                @csrf
 
-    <div class="wrap">
-        <h1>Login</h1>
-        <form action="" method="POST">
-            <div class="user-box">
-                <input type="text" name="username" required />
-                <label for="username">Username</label>
-            </div>
-
-            <div class="user-box">
-                <input type="password" name="password" required />
-                <label for="password">Password</label>
-            </div>
-
-            <!-- Căn chỉnh "Remember me" và checkbox cùng "Forgot password" trên một dòng -->
-            <div class="remember-forgot">
-                <div class="remember">
-                    <input type="checkbox" id="remember" name="remember" />
-                    <label for="remember">Remember</label>
+                <div class="mb-3">
+                    <label for="vtdTaiKhoan" class="form-label">Tên tài khoản</label>
+                    <input type="text" class="form-control" id="vtdTaiKhoan" name="vtdTaiKhoan" required />
+                    @error('vtdTaiKhoan')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <a href="#" class="forget">Forgot password?</a>
-            </div>
 
-            <input type="submit" value="Login" class="login" />
-        </form>
+                <div class="mb-3">
+                    <label for="vtdMatKhau" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" id="vtdMatKhau" name="vtdMatKhau" required />
+                    @error('vtdMatKhau')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-        <a href="/" class="next">Go Back</a>
+                <button type="submit" class="btn btn-primary">Login</button>
+
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>

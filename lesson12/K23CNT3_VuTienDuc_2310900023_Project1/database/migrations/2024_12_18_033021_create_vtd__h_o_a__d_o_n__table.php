@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('vtdMaHoaDon',255)->unique();
             $table->bigInteger('vtdMaKhachHang')->references('id')->on('vtd_KHACH_HANG');
             $table->date('vtdNgayHoaDon');
-            $table->date('vtdNgayNhanvtdNgayNhan');
+            $table->date('vtdNgayNhan');
             $table->string('vtdHoTenKhachHang',255);
             $table->string('vtdEmail',255);
             $table->string('vtdDienThoai',255);

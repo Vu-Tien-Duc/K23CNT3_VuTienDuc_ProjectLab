@@ -21,7 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             vtd_QUAN_TRITableSeeder::class,
             vtd_LOAI_SAN_PHAMTableSeeder::class,
-            vtd_SAN_PHAMTableSeeder::class
+            vtd_SAN_PHAMTableSeeder::class,
+            vtd_KHACH_HANGTableSeeder::class,
+            vtd_HOA_DONTableSeeder::class,
+            vtd_CT_HOA_DONTableSeeder::class
+
         ]);
         
     }
