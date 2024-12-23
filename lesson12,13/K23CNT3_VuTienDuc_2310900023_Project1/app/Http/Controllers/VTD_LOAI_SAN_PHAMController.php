@@ -22,6 +22,11 @@ class VTD_LOAI_SAN_PHAMController extends Controller
 
     public function vtdCreateSunmit(Request $request)
     {
+        $validatedData = $request->validate([
+            'vtdMaLoai' => 'required|string|max:255|unique:vtd_LOAI_SAN_PHAM,vtdMaLoai',  // Kiểm tra mã loại không trống và duy nhất
+            'vtdTenLoai' => 'required|string|max:255',  // Kiểm tra tên loại không trống và là chuỗi
+            'vtdTrangThai' => 'required|in:0,1',  // Trạng thái phải là 0 hoặc 1
+        ]);
         //ghi dữ liệu xuống db
         $vtdloaisanpham = new vtd_LOAI_SAN_PHAM;
         $vtdloaisanpham->vtdMaLoai = $request->vtdMaLoai;
@@ -34,47 +39,59 @@ class VTD_LOAI_SAN_PHAMController extends Controller
 
     public function vtdEdit($id)
     {
+        // Retrieve the product by the primary key (id)
         $vtdloaisanpham = vtd_LOAI_SAN_PHAM::find($id);
-        return view('vtdAdmins.vtdloaisanpham.vtd-edit',['vtdloaisanpham'=>$vtdloaisanpham]);
-    }
-    public function vtdEditSubmit(Request $request, $id)
-    {
-        // Kiểm tra và xác thực dữ liệu gửi lên
-        $validatedData = $request->validate([
-            'vtdTenLoai' => 'required|string|max:255',   
-            'vtdTrangThai' => 'required|in:0,1',  // Xác thực vtdTrangThai phải là 0 hoặc 1
-        ]);
     
-        // Tìm Loại Sản Phẩm theo mã Loại Sản Phẩm (vtdMaLoai)
-        $vtdloaisanpham = vtd_LOAI_SAN_PHAM::where('vtdMaLoai', $id)->first();
-    
-        // Kiểm tra xem loại sản phẩm có tồn tại không
+        // If the product does not exist, redirect with an error message
         if (!$vtdloaisanpham) {
             return redirect()->route('vtdadims.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
         }
     
-        // Cập nhật các thông tin Loại Sản Phẩm từ dữ liệu đã xác thực
+        // Pass the product data to the edit view
+        return view('vtdAdmins.vtdloaisanpham.vtd-edit', ['vtdloaisanpham' => $vtdloaisanpham]);
+    }
+    
+    public function vtdEditSubmit(Request $request)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'vtdMaLoai' => 'required|string|max:255|unique:vtd_LOAI_SAN_PHAM,vtdMaLoai,' . $request->id,  // Bỏ qua vtdMaLoai của bản ghi hiện tại
+            'vtdTenLoai' => 'required|string|max:255',   
+            'vtdTrangThai' => 'required|in:0,1',  // Validation for vtdTrangThai (0 or 1)
+        ]);
+    
+        // Find the product by id
+        $vtdloaisanpham = vtd_LOAI_SAN_PHAM::find($request->id);
+    
+        // Check if the product exists
+        if (!$vtdloaisanpham) {
+            return redirect()->route('vtdadims.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
+        }
+    
+        // Update the product with validated data
+        $vtdloaisanpham->vtdMaLoai = $request->vtdMaLoai;
         $vtdloaisanpham->vtdTenLoai = $request->vtdTenLoai;
         $vtdloaisanpham->vtdTrangThai = $request->vtdTrangThai;
     
-        // Lưu lại thông tin đã cập nhật vào cơ sở dữ liệu
+        // Save the updated product
         $vtdloaisanpham->save();
     
-        // Chuyển hướng về trang danh sách và hiển thị thông báo thành công
+        // Redirect back to the list page with a success message
         return redirect()->route('vtdadims.vtdloaisanpham')->with('success', 'Cập nhật loại sản phẩm thành công.');
     }
+    
     
 
     public function vtdGetDetail($id)
     {
-        $vtdloaisanpham = vtd_LOAI_SAN_PHAM::where('vtdMaLoai', $id)->first();
+        $vtdloaisanpham = vtd_LOAI_SAN_PHAM::where('id', $id)->first();
         return view('vtdAdmins.vtdloaisanpham.vtd-detail',['vtdloaisanpham'=>$vtdloaisanpham]);
 
     }
 
     public function vtdDelete($id)
     {
-        vtd_LOAI_SAN_PHAM::where('vtdMaLoai',$id)->delete();
+        vtd_LOAI_SAN_PHAM::where('id',$id)->delete();
     return back()->with('loaisanpham_deleted','Đã xóa sinh viên thành công!');
     }
 

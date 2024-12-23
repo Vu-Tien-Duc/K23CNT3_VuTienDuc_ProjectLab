@@ -46,16 +46,16 @@
                                 <!-- Các nút chức năng với icon -->
                                 <div class="btn-group" role="group">
                                     <!-- Xem chi tiết -->
-                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-detail/{{ $item->vtdMaLoai }}" class="btn btn-success btn-sm" title="Xem">
+                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-detail/{{ $item->id }}" class="btn btn-success btn-sm" title="Xem">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
                                     <!-- Chỉnh sửa -->
-                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-edit/{{ $item->vtdMaLoai }}" class="btn btn-primary btn-sm" title="Chỉnh sửa">
+                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-edit/{{ $item->id }}" class="btn btn-primary btn-sm" title="Chỉnh sửa">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
                                     <!-- Xóa -->
-                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-delete/{{ $item->vtdMaLoai }}" class="btn btn-danger btn-sm" 
-                                       onclick="return confirm('Bạn muốn xóa Mã Loại này không? Mã: {{ $item->vtdMaLoai }}');" title="Xóa">
+                                    <a href="/vtd-admins/vtd-loai-san-pham/vtd-delete/{{ $item->id }}" class="btn btn-danger btn-sm" 
+                                       onclick="return confirm('Bạn muốn xóa Mã Loại này không? ID: {{ $item->id }}');" title="Xóa">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </a>
                                 </div>
