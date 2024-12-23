@@ -9,7 +9,7 @@
         <a href="/vtd-admins/vtd-loai-san-pham" class="text-decoration-none text-dark">Loại Sản Phẩm</a>
     </li>
     <li class="list-group-item">
-        <a href="#" class="text-decoration-none text-dark">Sản Phẩm</a>
+        <a href="/vtd-admins/vtd-san-pham" class="text-decoration-none text-dark">Sản Phẩm</a>
     </li>
     <li class="list-group-item">
         <a href="#" class="text-decoration-none text-dark">And a fifth one</a>

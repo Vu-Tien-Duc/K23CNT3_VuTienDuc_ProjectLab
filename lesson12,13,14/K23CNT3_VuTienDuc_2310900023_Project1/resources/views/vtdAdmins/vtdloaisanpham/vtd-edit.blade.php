@@ -19,13 +19,16 @@
                             <!-- Mã Loại (disabled) -->
                             <div class="mb-3">
                                 <label for="vtdMaLoai" class="form-label">Mã Loại</label>
-                                <input type="text" class="form-control" id="vtdMaLoai" name="vtdMaLoai" value="{{ $vtdloaisanpham->vtdMaLoai }}" required>
+                                <input type="text" class="form-control" id="vtdMaLoai" name="vtdMaLoai" value="{{ $vtdloaisanpham->vtdMaLoai }}" >
+                                @error('vtdMaLoai')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             </div>
 
                             <!-- Tên Loại -->
                             <div class="mb-3">
                                 <label for="vtdTenLoai" class="form-label">Tên Loại</label>
-                                <input type="text" class="form-control" id="vtdTenLoai" name="vtdTenLoai" value="{{ old('vtdTenLoai', $vtdloaisanpham->vtdTenLoai) }}" required>
+                                <input type="text" class="form-control" id="vtdTenLoai" name="vtdTenLoai" value="{{ old('vtdTenLoai', $vtdloaisanpham->vtdTenLoai) }}" >
                                 @error('vtdTenLoai')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

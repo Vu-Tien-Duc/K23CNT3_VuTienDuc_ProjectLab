@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="vtdMaLoai" class="form-label">Mã Loại</label>
-                                <input type="text" class="form-control" id="vtdMaLoai" name="vtdMaLoai" value="{{ old('vtdMaLoai') }}" required>
+                                <input type="text" class="form-control" id="vtdMaLoai" name="vtdMaLoai" value="{{ old('vtdMaLoai') }}" >
                                 @error('vtdMaLoai')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -22,7 +22,7 @@
 
                             <div class="mb-3">
                                 <label for="vtdTenLoai" class="form-label">Tên Loại</label>
-                                <input type="text" class="form-control" id="vtdTenLoai" name="vtdTenLoai" value="{{ old('vtdTenLoai') }}" required>
+                                <input type="text" class="form-control" id="vtdTenLoai" name="vtdTenLoai" value="{{ old('vtdTenLoai') }}" >
                                 @error('vtdTenLoai')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

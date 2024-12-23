@@ -23,7 +23,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
     public function vtdCreateSunmit(Request $request)
     {
         $validatedData = $request->validate([
-            'vtdMaLoai' => 'required|string|max:255|unique:vtd_LOAI_SAN_PHAM,vtdMaLoai',  // Kiểm tra mã loại không trống và duy nhất
+            'vtdMaLoai' => 'required|unique:vtd_LOAI_SAN_PHAM,vtdMaLoai',  // Kiểm tra mã loại không trống và duy nhất
             'vtdTenLoai' => 'required|string|max:255',  // Kiểm tra tên loại không trống và là chuỗi
             'vtdTrangThai' => 'required|in:0,1',  // Trạng thái phải là 0 hoặc 1
         ]);
