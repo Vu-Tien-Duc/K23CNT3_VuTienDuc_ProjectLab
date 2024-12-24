@@ -66,12 +66,20 @@
 
                         <!-- Mã Loại -->
                         <div class="mb-3">
-                            <label for="vtdMaLoai" class="form-label">Mã loại</label>
-                            <input type="text" name="vtdMaLoai" class="form-control" value="{{ old('vtdMaLoai', $vtdsanpham->vtdMaLoai) }}">
+                            <label for="vtdMaLoai" class="form-label">Loại Danh Muc</label>
+                            <select name="vtdMaLoai" id="vtdMaLoai" class="form-control">
+                                @foreach ($vtdloaisanpham as $item)
+                                    <option value="{{ $item->id }}" 
+                                        {{ old('vtdMaLoai', $vtdsanpham->vtdMaLoai) == $item->id ? 'selected' : '' }}>
+                                        {{ $item->vtdTenLoai }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('vtdMaLoai')
-                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
 
                         <!-- Trạng thái -->
                         <div class="mb-3">

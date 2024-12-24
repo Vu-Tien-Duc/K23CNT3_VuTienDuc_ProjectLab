@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\vtd_SAN_PHAM; 
+use App\Models\vtd_LOAI_SAN_PHAM; // Sử dụng Model User để thao tác với cơ sở dữ liệu
 use Illuminate\Support\Facades\Storage;  // Use this for file handling
 class VTD_SAN_PHAMController extends Controller
 {
     //
      //admin CRUD
-    // list
+    // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()
     {
-        $vtdsanphams = vtd_SAN_PHAM::all();
+        $vtdsanphams = vtd_SAN_PHAM::where('vtdTrangThai',0)->get();
         return view('vtdAdmins.vtdsanpham.vtd-list',['vtdsanphams'=>$vtdsanphams]);
     } 
-    
+    // detail -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdDetail($id)
     {
         // Tìm sản phẩm theo ID
@@ -25,16 +26,19 @@ class VTD_SAN_PHAMController extends Controller
         return view('vtdAdmins.vtdsanpham.vtd-detail', ['vtdsanpham' => $vtdsanpham]);
     }
 
-      //create
+      //create  -----------------------------------------------------------------------------------------------------------------------------------------
       public function vtdCreate()
       {
-          return view('vtdAdmins.vtdsanpham.vtd-create');
+            // đọc dữ liệu từ vtd_LOAI_SAN_PHAM
+            $vtdloaisanpham = vtd_LOAI_SAN_PHAM::all();
+          return view('vtdAdmins.vtdsanpham.vtd-create',['vtdloaisanpham'=>$vtdloaisanpham]);
       }
      
 
      // Controller
 public function vtdCreateSubmit(Request $request)
 {
+
     // Validate input
     $validatedData = $request->validate([
         'vtdMaSanPham' => 'required|unique:vtd_SAN_PHAM,vtdMaSanPham',
@@ -82,7 +86,7 @@ public function vtdCreateSubmit(Request $request)
     return redirect()->route('vtdadims.vtdsanpham');
 }
 
-//delete
+//delete    -----------------------------------------------------------------------------------------------------------------------------------------
 
 public function vtddelete($id)
 {
@@ -90,14 +94,20 @@ public function vtddelete($id)
 return back()->with('sanpham_deleted','Đã xóa sinh viên thành công!');
 }
 
-// edit
+// edit -----------------------------------------------------------------------------------------------------------------------------------------
 public function vtdEdit($id)
     {
-        // Tìm sản phẩm theo ID
-        $vtdsanpham = VTD_SAN_PHAM::findOrFail($id);
+       // Tìm sản phẩm theo ID
+    $vtdsanpham = VTD_SAN_PHAM::findOrFail($id);
 
-        // Trả về view với dữ liệu sản phẩm
-        return view('vtdAdmins.vtdsanpham.vtd-edit', ['vtdsanpham'=>$vtdsanpham]);
+    // Lấy tất cả các loại sản phẩm từ bảng vtd_LOAI_SAN_PHAM
+    $vtdloaisanpham = Vtd_LOAI_SAN_PHAM::all();
+
+    // Trả về view với dữ liệu sản phẩm và loại sản phẩm
+    return view('vtdAdmins.vtdsanpham.vtd-edit', [
+        'vtdsanpham' => $vtdsanpham,
+        'vtdloaisanpham' => $vtdloaisanpham
+    ]);
     }
 
     // Phương thức xử lý dữ liệu form chỉnh sửa sản phẩm

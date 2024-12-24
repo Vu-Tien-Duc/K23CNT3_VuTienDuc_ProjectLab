@@ -24,6 +24,11 @@ Route::post('/admins/vtd-login', [VTD_QUAN_TRIController::class, 'vtdLoginSubmit
 route::get('/vtd-admins',function(){
     return view('vtdAdmins.index');
 });
+#admins - danh muc
+Route::get('/vtd-admins/danhmuc',function()
+{
+    return view('vtdAdmins.vtddanhmuc');
+});
 // loai san pham
 // list
 use App\Http\Controllers\VTD_LOAI_SAN_PHAMController;

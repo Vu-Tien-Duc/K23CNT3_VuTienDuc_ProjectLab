@@ -3,7 +3,7 @@
         <strong>Quản Trị Nội Dung</strong>
     </li>
     <li class="list-group-item">
-        <a href="#" class="text-decoration-none text-dark">Danh Sách Quản Trị</a>
+        <a href="/vtd-admins/danhmuc" class="text-decoration-none text-dark">Danh Sách Quản Trị</a>
     </li>
     <li class="list-group-item">
         <a href="/vtd-admins/vtd-loai-san-pham" class="text-decoration-none text-dark">Loại Sản Phẩm</a>

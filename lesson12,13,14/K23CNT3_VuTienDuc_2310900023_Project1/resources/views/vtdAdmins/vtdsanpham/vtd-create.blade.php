@@ -54,12 +54,17 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="vtdMaLoai" class="form-label">Mã Loại</label>
-                                <input type="text" class="form-control" id="vtdMaLoai" name="vtdMaLoai" value="{{ old('vtdMaLoai') }}" >
+                                <label for="vtdMaLoai" class="form-label">Loại Danh Muc</label>
+                                <select name="vtdMaLoai" id="vtdMaLoai" class="form-control">
+                                    @foreach ($vtdloaisanpham as $item)
+                                        <option value="{{ $item->id }}">{{ $item->vtdTenLoai }}</option>
+                                    @endforeach
+                                </select>
                                 @error('vtdMaLoai')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                            
 
                             <div class="mb-3">
                                 <label for="vtdTrangThai" class="form-label">Trạng Thái</label>
