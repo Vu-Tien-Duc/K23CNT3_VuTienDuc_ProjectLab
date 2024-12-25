@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;  // Use this for file handling
 class VTD_SAN_PHAMController extends Controller
 {
     //
+
+
      //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()
@@ -91,7 +93,7 @@ public function vtdCreateSubmit(Request $request)
 public function vtddelete($id)
 {
     vtd_SAN_PHAM::where('id',$id)->delete();
-return back()->with('sanpham_deleted','Đã xóa sinh viên thành công!');
+return back()->with('sanpham_deleted','Đã xóa Sản Phẩm thành công!');
 }
 
 // edit -----------------------------------------------------------------------------------------------------------------------------------------

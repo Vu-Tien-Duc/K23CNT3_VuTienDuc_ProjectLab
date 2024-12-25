@@ -53,7 +53,7 @@
                         <div class="card-footer">
                             <!-- Change button label to "Cập nhật" (Update) -->
                             <button class="btn btn-success" type="submit">Cập nhật</button>
-                            <a href="{{ route('vtdadims.vtdloaisanpham') }}" class="btn btn-primary">Trở lại</a>
+                            <a href="{{ route('vtdadmins.vtdloaisanpham') }}" class="btn btn-primary">Trở lại</a>
                         </div>
                     </div>
                 </form>

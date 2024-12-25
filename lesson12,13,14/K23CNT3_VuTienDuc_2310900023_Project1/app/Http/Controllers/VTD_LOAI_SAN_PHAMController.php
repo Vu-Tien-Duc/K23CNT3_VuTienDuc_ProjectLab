@@ -34,7 +34,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
         $vtdloaisanpham->vtdTrangThai = $request->vtdTrangThai;
 
         $vtdloaisanpham->save();
-       return redirect()->route('vtdadims.vtdloaisanpham');
+       return redirect()->route('vtdadmins.vtdloaisanpham');
     }
 
     public function vtdEdit($id)
@@ -44,7 +44,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
     
         // If the product does not exist, redirect with an error message
         if (!$vtdloaisanpham) {
-            return redirect()->route('vtdadims.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
+            return redirect()->route('vtdadmins.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
         }
     
         // Pass the product data to the edit view
@@ -65,7 +65,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
     
         // Check if the product exists
         if (!$vtdloaisanpham) {
-            return redirect()->route('vtdadims.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
+            return redirect()->route('vtdadmins.vtdloaisanpham')->with('error', 'Loại sản phẩm không tồn tại.');
         }
     
         // Update the product with validated data
@@ -77,7 +77,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
         $vtdloaisanpham->save();
     
         // Redirect back to the list page with a success message
-        return redirect()->route('vtdadims.vtdloaisanpham')->with('success', 'Cập nhật loại sản phẩm thành công.');
+        return redirect()->route('vtdadmins.vtdloaisanpham')->with('success', 'Cập nhật loại sản phẩm thành công.');
     }
     
     
@@ -92,7 +92,7 @@ class VTD_LOAI_SAN_PHAMController extends Controller
     public function vtdDelete($id)
     {
         vtd_LOAI_SAN_PHAM::where('id',$id)->delete();
-    return back()->with('loaisanpham_deleted','Đã xóa sinh viên thành công!');
+    return back()->with('loaisanpham_deleted','Đã xóa Loại Sản Phẩm thành công!');
     }
 
 }

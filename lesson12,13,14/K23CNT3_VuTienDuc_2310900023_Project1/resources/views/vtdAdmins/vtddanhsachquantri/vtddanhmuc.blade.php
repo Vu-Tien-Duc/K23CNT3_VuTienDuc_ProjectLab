@@ -13,8 +13,8 @@
                 <div class="card text-center shadow-lg">
                     <div class="card-body bg-primary text-white">
                         <h5 class="card-title">Sản Phẩm</h5>
-                        <p class="card-text">Số lượng sản phẩm</p>
-                        <a href="/vtd-admins/vtd-san-pham" class="btn btn-outline-light">Xem Sản Phẩm</a>
+                        <p class="card-text">{{ $productCount }} sản phẩm</p> <!-- Hiển thị số lượng sản phẩm -->
+                        <a href="/vtd-admins/vtddanhsachquantri/vtdsanpham" class="btn btn-outline-light">Xem Sản Phẩm</a>
                     </div>
                 </div>
             </div>
@@ -24,8 +24,8 @@
                 <div class="card text-center shadow-lg">
                     <div class="card-body bg-info text-white">
                         <h5 class="card-title">Tin Tức</h5>
-                        <p class="card-text">Số lượng bài viết</p>
-                        <a href="/vtd-admins/vtd-tin-tuc" class="btn btn-outline-light">Xem Tin Tức</a>
+                        <p class="card-text">Tin Tức New</p>
+                        <a href="{{route('vtdAdmins.vtddanhsachquantri..danhmuc.tintuc')}}" class="btn btn-outline-light">Xem Tin Tức</a>
                     </div>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                 <div class="card text-center shadow-lg">
                     <div class="card-body bg-success text-white">
                         <h5 class="card-title">Tài Khoản Người Dùng</h5>
-                        <p class="card-text">Số lượng người dùng</p>
-                        <a href="/vtd-admins/vtd-nguoi-dung" class="btn btn-outline-light">Xem Người Dùng</a>
+                        <p class="card-text"> Số lượng người dùng: {{$userCount}}</p>
+                        <a href="/vtd-admins/vtddanhsachquantri/vtdnguoidung" class="btn btn-outline-light">Xem Người Dùng</a>
                     </div>
                 </div>
             </div>

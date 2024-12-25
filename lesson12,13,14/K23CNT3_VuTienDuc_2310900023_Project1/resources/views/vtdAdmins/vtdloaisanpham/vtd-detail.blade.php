@@ -25,7 +25,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{route('vtdadims.vtdloaisanpham')}}" class="btn btn-primary"> Back</a>
+                            <a href="{{route('vtdadmins.vtdloaisanpham')}}" class="btn btn-primary"> Back</a>
                         </div>
                 </div>
             </div>

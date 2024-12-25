@@ -1,47 +1,41 @@
 <ul class="list-group">
+    <!-- Hiển thị tên tài khoản nếu đã đăng nhập -->
+    <li class="list-group-item active" style="color: red; background:black;">
+        @if(Session::has('username'))
+            <span class="fw-bold">Hello, {{ Session::get('username') }}</span>
+        @else
+            <a href="/vtd-admins/login" class="text-decoration-none text-dark">Đăng nhập</a>
+        @endif
+    </li>
+
     <li class="list-group-item active" aria-current="true">
         <strong>Quản Trị Nội Dung</strong>
     </li>
+
     <li class="list-group-item">
-        <a href="/vtd-admins/danhmuc" class="text-decoration-none text-dark">Danh Sách Quản Trị</a>
+        <a href="/vtd-admins/vtddanhsachquantri/vtddanhmuc" class="text-decoration-none text-dark">Danh Sách Quản Trị</a>
     </li>
+
     <li class="list-group-item">
         <a href="/vtd-admins/vtd-loai-san-pham" class="text-decoration-none text-dark">Loại Sản Phẩm</a>
     </li>
+
     <li class="list-group-item">
         <a href="/vtd-admins/vtd-san-pham" class="text-decoration-none text-dark">Sản Phẩm</a>
     </li>
+
     <li class="list-group-item">
-        <a href="#" class="text-decoration-none text-dark">And a fifth one</a>
+        <a href="/vtd-admins/vtd-khach-hang" class="text-decoration-none text-dark">Khách Hàng</a>
     </li>
+
+    <li class="list-group-item">
+        <a href="/vtd-admins/vtd-hoa-don" class="text-decoration-none text-dark">Hóa Đơn</a>
+    </li>
+
+    <li class="list-group-item">
+        <a href="/vtd-admins/vtd-ct-hoa-don" class="text-decoration-none text-dark">Chi Tiết Hóa Đơn</a>
+    </li>
+
 </ul>
 
-<style>
-    /* Tăng cường hiệu ứng hover và thay đổi màu sắc của liên kết */
-    .list-group-item a {
-        color: #333;
-        transition: all 0.3s ease;
-    }
 
-    .list-group-item a:hover {
-        color: #007bff;
-        text-decoration: underline;
-    }
-
-    /* Thêm màu sắc cho từng item khi hover */
-    .list-group-item:hover {
-        background-color: #f8f9fa;
-    }
-
-    /* Tùy chỉnh phần tử active */
-    .list-group-item.active {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-    /* Đảm bảo khoảng cách giữa các mục trong danh sách */
-    .list-group-item {
-        padding: 15px 20px;
-        margin-bottom: 5px;
-    }
-</style>

@@ -47,7 +47,7 @@
 
                             <div class="mb-3">
                                 <label for="vtdDonGia" class="form-label">Đơn Giá</label>
-                                <input type="text" class="form-control" id="vtdDonGia" name="vtdDonGia" value="{{ old('vtdDonGia') }}" >
+                                <input type="number" class="form-control" id="vtdDonGia" name="vtdDonGia" value="{{ old('vtdDonGia') }}" >
                                 @error('vtdDonGia')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

@@ -1,34 +1,53 @@
-<header class="d-flex justify-content-between align-items-center bg-dark text-white p-3">
-    <!-- Logo hoặc Tiêu đề trang -->
-    <div class="d-flex align-items-center">
-        <a href="/vtd-admins" class="text-white text-decoration-none">
-            <h3 class="mb-0">Admin Home</h3> <!-- Tiêu đề trang -->
-        </a>
-    </div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị</title>
+    <!-- Bootstrap 5.3.3 (Nếu bạn đã có liên kết, không cần gán lại) -->
+</head>
+<body>
 
-    <!-- Menu người dùng và các chức năng khác -->
-    <div class="d-flex align-items-center">
-        <!-- Menu Thông báo -->
-        <button class="btn btn-link text-white me-3" aria-label="Notifications">
-            <i class="fas fa-bell"></i>
-        </button>
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Logo -->
 
-        <!-- Menu Người dùng -->
-        <div class="dropdown">
-            <button class="btn btn-link text-white dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user-circle"></i> {{ Auth::user()->name ?? 'Guest' }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="userMenu">
-                <li><a class="dropdown-item" href="">Profile</a></li>
-                <li><a class="dropdown-item" href="">Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/">Logout</a></li>
-            </ul>
+        <div class="logo">
+            <a href="/vtd-admins" class="text-white text-decoration-none">
+                <!-- Đường dẫn đến logo trong thư mục public/storage/img/san_pham/ -->
+                <img src="{{ asset('storage/img/san_pham/logoD.jpg') }}" alt="Logo" class="img-fluid" style="max-height: 40px;" />
+            </a>
         </div>
 
-        <!-- Menu Cài đặt -->
-        <button class="btn btn-link text-white ms-3" aria-label="Settings">
-            <i class="fas fa-cogs"></i>
-        </button>
+
+        <!-- Menu Navigation -->
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/dashboard" style="font-size: 14px;">Bảng điều khiển</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vtd-admins/vtddanhsachquantri/vtdsanpham" style="font-size: 14px;">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/orders" style="font-size: 14px;">Đơn hàng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vtd-admins/vtddanhsachquantri/vtdnguoidung" style="font-size: 14px;">Người dùng</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Thông tin tài khoản & Đăng xuất -->
+        <div class="d-flex align-items-center">
+            <span class="me-3" style="font-size: 14px;">Xin chào, Admin</span> <!-- Tên tài khoản -->
+            <a href="{{route('admins.vtdLogin')}}" class="text-white text-decoration-none" style="font-size: 14px;">Đăng xuất</a> <!-- Link đăng xuất -->
+        </div>
     </div>
 </header>
+
+<!-- Bootstrap JS (nếu chưa có trong project của bạn) -->
+<!-- <script src="path/to/bootstrap.bundle.min.js"></script> -->
+
+</body>
+</html>

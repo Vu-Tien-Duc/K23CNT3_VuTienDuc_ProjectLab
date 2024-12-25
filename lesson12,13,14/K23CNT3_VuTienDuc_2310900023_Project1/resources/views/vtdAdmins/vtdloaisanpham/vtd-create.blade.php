@@ -44,7 +44,7 @@
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-success">Create</button>
-                            <a href="{{route('vtdadims.vtdloaisanpham')}}" class="btn btn-primary"> Back</a>
+                            <a href="{{route('vtdadmins.vtdloaisanpham')}}" class="btn btn-primary"> Back</a>
                         </div>
                     </div>
                 </form>
