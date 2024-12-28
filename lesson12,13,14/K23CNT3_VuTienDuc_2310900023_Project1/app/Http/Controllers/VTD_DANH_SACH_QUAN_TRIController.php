@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\vtd_SAN_PHAM; 
 use App\Models\vtd_KHACH_HANG; 
+use App\Models\vtd_TIN_TUC; 
 class VTD_DANH_SACH_QUAN_TRIController extends Controller
 {
     //
@@ -17,10 +18,11 @@ class VTD_DANH_SACH_QUAN_TRIController extends Controller
         
             // Truy vấn số lượng người dùng
             $userCount = vtd_KHACH_HANG::count();
+            $ttCount = vtd_TIN_TUC::count();
 
         
             // Trả về view và truyền cả productCount và userCount
-            return view('vtdAdmins.vtddanhsachquantri.vtddanhmuc', compact('productCount', 'userCount'));
+            return view('vtdAdmins.vtddanhsachquantri.vtddanhmuc', compact('productCount', 'userCount','ttCount'));
         }
 
         public function nguoidung()
@@ -37,13 +39,24 @@ class VTD_DANH_SACH_QUAN_TRIController extends Controller
         }
         
 
-    // tin tức
-    public function tintuc()
-    {
+        public function tintuc()
+        {
+            // Retrieve all news articles from the database (assuming you have a model named vtd_TIN_TUC)
+            $vtdtintucs = vtd_TIN_TUC::all();  // Fetching all articles
         
-        $vtdsanphams = vtd_SAN_PHAM::all();
-        return view('vtdAdmins.vtddanhsachquantri.vtddanhmuc.vtdtintuc',['vtdsanphams'=>$vtdsanphams]);
-    }
+            // Loop through articles and add the full URL to the image
+            foreach ($vtdtintucs as $article) {
+                // Assuming vtdHinhAnh stores the image name, we'll prepend the 'public/storage' path
+                $article->image_url = asset('storage/' . $article->vtdHinhAnh);
+            }
+        
+            // Return the view and pass the articles to it
+            return view('vtdAdmins.vtddanhsachquantri.vtddanhmuc.vtdtintuc', [
+                'vtdtintucs' => $vtdtintucs, // Passing the news articles to the view
+            ]);
+        }
+        
+    
 
     // Hiển thị danh sách sản phẩm
     public function sanpham()

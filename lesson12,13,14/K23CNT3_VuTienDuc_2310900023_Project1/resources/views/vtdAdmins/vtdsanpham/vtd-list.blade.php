@@ -79,6 +79,11 @@
                     @endforelse
                 </tbody>
             </table>
+
+            <!-- Pagination links -->
+            <div class="d-flex justify-content-center mt-3">
+                {{ $vtdsanphams->links('pagination::bootstrap-5') }}
+            </div>
         </div>
     </div>
 @endsection

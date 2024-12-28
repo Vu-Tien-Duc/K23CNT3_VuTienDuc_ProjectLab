@@ -7,6 +7,7 @@ use App\Http\Controllers\VTD_KHACH_HANGcontroller;
 use App\Http\Controllers\VTD_DANH_SACH_QUAN_TRIController;
 use App\Http\Controllers\VTD_HOA_DONController;
 use App\Http\Controllers\VTD_CT_HOA_DONController;
+use App\Http\Controllers\VTD_TIN_TUCController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,3 +137,46 @@ Route::post('/vtd-admins/vtd-quan-tri/vtd-edit/{id}', [VTD_QUAN_TRIController::c
 //delete
 // Đảm bảo sử dụng phương thức POST để gọi route xóa sản phẩm
 Route::get('/vtd-admins/vtd-quan-tri/vtd-delete/{id}', [VTD_QUAN_TRIController::class, 'vtdDelete'])->name('vtdadmin.vtdquantri.vtddelete');
+
+// Tin Tức--------------------------------------------------------------------------------------------------------------------------------------
+// list
+Route::get('/vtd-admins/vtd-tin-tuc',[VTD_TIN_TUCController::class,'vtdList'])->name('vtdadmins.vtdtintuc');
+//detail
+Route::get('/vtd-admins/vtd-tin-tuc/vtd-detail/{id}', [VTD_TIN_TUCController::class, 'vtdDetail'])->name('vtdadmin.vtdtintuc.vtdDetail');
+//create
+Route::get('/vtd-admins/vtd-tin-tuc/vtd-create',[VTD_TIN_TUCController::class,'vtdCreate'])->name('vtdadmin.vtdtintuc.vtdcreate');
+Route::post('/vtd-admins/vtd-tin-tuc/vtd-create',[VTD_TIN_TUCController::class,'vtdCreateSubmit'])->name('vtdadmin.vtdtintuc.vtdCreateSubmit');
+//edit
+Route::get('/vtd-admins/vtd-tin-tuc/vtd-edit/{id}', [VTD_TIN_TUCController::class, 'vtdEdit'])->name('vtdadmin.vtdtintuc.vtdedit');
+Route::post('/vtd-admins/vtd-tin-tuc/vtd-edit/{id}', [VTD_TIN_TUCController::class, 'vtdEditSubmit'])->name('vtdadmin.vtdtintuc.vtdEditSubmit');
+//delete
+// Đảm bảo sử dụng phương thức POST để gọi route xóa sản phẩm
+Route::get('/vtd-admins/vtd-tin-tuc/vtd-delete/{id}', [VTD_TIN_TUCController::class, 'vtdDelete'])->name('vtdadmin.vtdtintuc.vtddelete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+use App\Http\Controllers\HomeController;
+
+# User - Routes
+Route::get('/vtd-user', [HomeController::class, 'index'])->name('vtduser.home');
+
+// Hiển thị chi tiết sản phẩm
+Route::get('/vtd-user/show/{id}', [HomeController::class, 'show'])->name('vtduser.show');
+
+// Route hiển thị hóa đơn
+Route::get('/vtd-user/{invoiceId}', [HomeController::class, 'showhoadon'])->name('vtduser.hoadon');
+
+Route::post('/vtd-user/create-invoice', [HomeController::class, 'createInvoice'])->name('invoice.create');
+//
+Route::post('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('vtduser.addToCart');

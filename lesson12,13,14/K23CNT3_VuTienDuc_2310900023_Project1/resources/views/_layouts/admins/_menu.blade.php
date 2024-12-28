@@ -41,6 +41,10 @@
         <a href="/vtd-admins/vtd-ct-hoa-don" class="text-decoration-none text-dark">Chi Tiết Hóa Đơn</a>
     </li>
 
+    <li class="list-group-item">
+        <a href="/vtd-admins/vtd-tin-tuc" class="text-decoration-none text-dark">Tin Tức</a>
+    </li>
+
 </ul>
 
 

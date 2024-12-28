@@ -14,10 +14,15 @@ class VTD_SAN_PHAMController extends Controller
      //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()
-    {
-        $vtdsanphams = vtd_SAN_PHAM::where('vtdTrangThai',0)->get();
-        return view('vtdAdmins.vtdsanpham.vtd-list',['vtdsanphams'=>$vtdsanphams]);
-    } 
+{
+    // Apply pagination and filter by vtdTrangThai
+    $vtdsanphams = vtd_SAN_PHAM::where('vtdTrangThai', 0) // Filter by active status
+                               ->paginate(5);  // Paginate results, 10 per page
+    
+    // Pass the paginated products to the view
+    return view('vtdAdmins.vtdsanpham.vtd-list', ['vtdsanphams' => $vtdsanphams]);
+}
+
     // detail -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdDetail($id)
     {

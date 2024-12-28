@@ -24,7 +24,7 @@
                 <div class="card text-center shadow-lg">
                     <div class="card-body bg-info text-white">
                         <h5 class="card-title">Tin Tức</h5>
-                        <p class="card-text">Tin Tức New</p>
+                        <p class="card-text" >Tin Tức New : {{ $ttCount }}</p>
                         <a href="{{route('vtdAdmins.vtddanhsachquantri..danhmuc.tintuc')}}" class="btn btn-outline-light">Xem Tin Tức</a>
                     </div>
                 </div>
