@@ -13,4 +13,16 @@ class vtd_SAN_PHAM extends Model
     protected $primaryKey = 'id';
     public $incrementing = false; // Nếu vtdnhacc không phải là auto-increment
     public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
+   
+    protected $fillable = [
+        'vtdMaSanPham',
+        'vtdTenSanPham',
+        'vtdHinhAnh',
+        'vtdSoLuong',
+        'vtdDonGia',
+        'vtdMaLoai',
+        'vtdMoTa',
+        'vtdTrangThai'
+    ];
+
 }

@@ -1,10 +1,20 @@
-@extends('_layouts.frontend.user')
+@extends('_layouts.frontend.user1')
 
 @section('title', 'Trang Chủ')
 
 @section('content-body')
     <div class="container">
         <h1>Chào mừng đến với Trang Chủ</h1>
+
+        @if(Auth::check()) 
+        <!-- Nếu người dùng đã đăng nhập, hiển thị tên người dùng và nút "Đăng Xuất" -->
+        <a href="{{ route('vtduser.logout') }}" class="btn btn-danger">
+            Hello, {{ session('username') }} (Đăng Xuất)
+        </a>
+    @else
+        <!-- Nếu người dùng chưa đăng nhập, hiển thị nút "Đăng Nhập" -->
+        <a href="{{ route('vtduser.login') }}" class="btn btn-primary">Hello</a>
+    @endif
     
         <p>Đây là giao diện người dùng, nơi bạn có thể xem thông tin và tương tác với các tính năng của website.</p>
 

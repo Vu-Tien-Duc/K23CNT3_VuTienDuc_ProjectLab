@@ -24,20 +24,33 @@
             <i class="fab fa-instagram"></i>
           </a>
       </div>
-      <div>
-        <a class="mr-4 hover:underline" href="#"><i class="fas fa-bell"></i> Thông Báo</a>
-        <a class="mr-4 hover:underline" href="vtd-user/support">
+      <div class="flex items-center space-x-4">
+        <a class="hover:underline" href="#"><i class="fas fa-bell"></i> Thông Báo</a>
+        <a class="hover:underline" href="vtd-user/support">
             <i class="fas fa-question-circle"></i> Hỗ Trợ
-          </a>
-        <a class="mr-4 hover:underline" href="#"><i class="fas fa-globe"></i> Tiếng Việt</a>
-        <a class="mr-4 hover:underline" href="#">Đăng Ký</a>
-        <a class="hover:underline" href="{{route('vtduser.login')}}">Đăng Nhập</a>
-      </div>
+        </a>
+        <a class="hover:underline" href="#"><i class="fas fa-globe"></i> Tiếng Việt</a>
+        <a class="flex items-center space-x-1" href="#">
+            <i class="fas fa-user"></i>
+            <span>{{ Session::has('username1') ? 'Hello, ' . Session::get('username1') : '' }}</span>
+        </a>
+        @if(Session::has('username1'))
+            <a class="hover:underline" href="{{ route('vtduser.home') }}">
+                Đăng Xuất
+            </a>
+        @else
+            <a class="hover:underline" href="{{ route('vtduser.login') }}">
+                Đăng Nhập
+            </a>
+        @endif
+    </div>
+    
+   
     </div>
     <!-- Main Navigation -->
     <div class="flex items-center py-4">
       <div class="flex items-center">
-        <img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/>
+        <img alt="logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/>
         <span class="text-2xl font-bold">buyphone</span>
       </div>
       <div class="flex-grow mx-4">
@@ -52,7 +65,6 @@
         <i class="fas fa-shopping-cart text-2xl"></i>
       </div>
     </div>
-    
   </div>
 </body>
 </html>

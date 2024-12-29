@@ -8,6 +8,8 @@ use App\Http\Controllers\VTD_DANH_SACH_QUAN_TRIController;
 use App\Http\Controllers\VTD_HOA_DONController;
 use App\Http\Controllers\VTD_CT_HOA_DONController;
 use App\Http\Controllers\VTD_TIN_TUCController;
+use App\Http\Controllers\VTD_LOGIN_USERController;
+use App\Http\Controllers\VTD_SIGNUPController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,15 +170,25 @@ Route::get('/vtd-admins/vtd-tin-tuc/vtd-delete/{id}', [VTD_TIN_TUCController::cl
 
 use App\Http\Controllers\HomeController;
 
-# User - Routes
+// User - Routes
 Route::get('/vtd-user', [HomeController::class, 'index'])->name('vtduser.home');
-
+Route::get('/vtd-user1', [HomeController::class, 'index1'])->name('vtduser.home1');
 // Hiển thị chi tiết sản phẩm
 Route::get('/vtd-user/show/{id}', [HomeController::class, 'show'])->name('vtduser.show');
+// search
+Route::get('/search', [VTD_SAN_PHAMController::class, 'search'])->name('vtduser.search');
 
-// Route hiển thị hóa đơn
-Route::get('/vtd-user/{invoiceId}', [HomeController::class, 'showhoadon'])->name('vtduser.hoadon');
+Route::get('/vtduser/login', [VTD_LOGIN_USERController::class, 'vtdLogin'])->name('vtduser.login');
+Route::post('/vtduser/login', [VTD_LOGIN_USERController::class, 'vtdLoginSubmit'])->name('vtduser.vtdLoginSubmit');
+Route::get('/vtduser/logout', [VTD_LOGIN_USERController::class, 'vtdLogout'])->name('vtduser.logout');
 
-Route::post('/vtd-user/create-invoice', [HomeController::class, 'createInvoice'])->name('invoice.create');
-//
-Route::post('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('vtduser.addToCart');
+
+// hỗ trợ 
+route::get('/vtd-user/support',function()
+{
+    return view('vtduser.support');
+});
+
+// signup
+Route::get('/vtd-user/signup', [VTD_SIGNUPController::class, 'vtdsignup'])->name('vtduser.vtdsignup');
+Route::post('/vtd-user/signup', [VTD_SIGNUPController::class, 'vtdsignupSubmit'])->name('vtduser.vtdsignupSubmit');

@@ -8,8 +8,25 @@ use App\Models\vtd_LOAI_SAN_PHAM; // Sử dụng Model User để thao tác vớ
 use Illuminate\Support\Facades\Storage;  // Use this for file handling
 class VTD_SAN_PHAMController extends Controller
 {
-    //
-
+    // In your controller
+    public function search(Request $request)
+    {
+        // Lấy từ khóa tìm kiếm từ input của người dùng
+        $search = $request->input('search');
+    
+        // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+        if ($search) {
+            // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+            $products = vtd_SAN_PHAM::where('vtdTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+            $products = vtd_SAN_PHAM::paginate(10);
+        }
+    
+        // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
+        return view('vtduser.search', compact('products', 'search'));
+    }
+    
 
      //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------

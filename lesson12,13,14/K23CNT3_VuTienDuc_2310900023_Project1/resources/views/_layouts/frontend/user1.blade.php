@@ -76,12 +76,12 @@
 
     <!-- Header Section -->
     <header>
-        @include('_layouts.frontend._headerTitle') <!-- Title for frontend when not logged in -->
+        @include('_layouts.frontend._headerTitle1') <!-- Title for frontend when not logged in -->
     </header>
     <hr style="border: 2px solid black">
 
     <!-- Navbar (Main Navigation Menu) -->
-    @include('_layouts.frontend._menu') <!-- Menu navigation (with toggle functionality) -->
+    @include('_layouts.frontend._menu1') <!-- Menu navigation (with toggle functionality) -->
     <hr style="border: 2px solid black">
 
     <!-- Main Content Section -->
@@ -109,3 +109,4 @@
 </body>
 
 </html>
+

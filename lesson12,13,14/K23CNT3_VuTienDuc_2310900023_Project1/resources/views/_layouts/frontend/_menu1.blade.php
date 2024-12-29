@@ -11,7 +11,7 @@
             <h1 class="text-white text-2xl font-bold">BUYPHONE</h1>
             <ul class="flex space-x-4 text-white">
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="{{route('vtduser.home')}}">Trang Chủ</a>
+                    <a class="nav-link hover:text-gray-300" href="{{route('vtduser.home1')}}">Trang Chủ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link hover:text-gray-300" href="/iphone">iPhone</a>
