@@ -9,11 +9,14 @@ class vtd_SAN_PHAM extends Model
 {
     use HasFactory;
 
+    // Tên bảng trong cơ sở dữ liệu
+   
     protected $table = 'vtd_SAN_PHAM';
     protected $primaryKey = 'id';
-    public $incrementing = false; // Nếu vtdnhacc không phải là auto-increment
-    public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
-   
+    public $timestamps = true;
+
+    
+    // Các trường có thể được gán hàng loạt
     protected $fillable = [
         'vtdMaSanPham',
         'vtdTenSanPham',
@@ -22,7 +25,9 @@ class vtd_SAN_PHAM extends Model
         'vtdDonGia',
         'vtdMaLoai',
         'vtdMoTa',
-        'vtdTrangThai'
+        'vtdTrangThai',
     ];
 
+
 }
+

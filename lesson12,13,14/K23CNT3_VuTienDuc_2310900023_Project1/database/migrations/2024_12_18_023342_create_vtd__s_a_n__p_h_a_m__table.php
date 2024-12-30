@@ -19,6 +19,7 @@ return new class extends Migration
             $table->Integer('vtdSoLuong');
             $table->float('vtdDonGia');
             $table->bigInteger('vtdMaLoai')->references('id')->on('vtd_LOAI_SAN_PHAM');
+            $table->string('vtdMoTa',1000);
             $table->tinyInteger('vtdTrangThai');
             $table->timestamps();
             

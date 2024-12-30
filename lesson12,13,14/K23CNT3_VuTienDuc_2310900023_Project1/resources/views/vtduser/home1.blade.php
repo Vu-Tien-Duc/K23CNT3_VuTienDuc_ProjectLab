@@ -5,16 +5,6 @@
 @section('content-body')
     <div class="container">
         <h1>Chào mừng đến với Trang Chủ</h1>
-
-        @if(Auth::check()) 
-        <!-- Nếu người dùng đã đăng nhập, hiển thị tên người dùng và nút "Đăng Xuất" -->
-        <a href="{{ route('vtduser.logout') }}" class="btn btn-danger">
-            Hello, {{ session('username') }} (Đăng Xuất)
-        </a>
-    @else
-        <!-- Nếu người dùng chưa đăng nhập, hiển thị nút "Đăng Nhập" -->
-        <a href="{{ route('vtduser.login') }}" class="btn btn-primary">Hello</a>
-    @endif
     
         <p>Đây là giao diện người dùng, nơi bạn có thể xem thông tin và tương tác với các tính năng của website.</p>
 
@@ -30,15 +20,13 @@
                             <p class="card-text"><small class="text-muted">Số lượng còn lại: {{ $sanPham->vtdSoLuong }}</small></p>
                             
                             <!-- Nút xem chi tiết -->
-                            <a href="{{ route('vtduser.show', $sanPham->id) }}" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
+                            <a href="{{ route('vtduser.show', $sanPham->id) }}" class="btn btn-primary btn-sm flex " style="justify-content: center">Xem Chi Tiết</a>
 
                             <!-- Nút Mua và icon giỏ hàng -->
-                            <a href=" "   
-                               class="btn btn-success btn-sm" 
-                               onclick="return confirm('Bạn muốn mua {{ $sanPham->vtdTenSanPham }} này không ?');" 
-                               title="Mua">
+                            <a href="{{ route('vtduser.vtdthanhtoan', ['product_id' => $sanPham->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fa fa-shopping-cart"></i> Mua
                             </a>
+                            
 
                             <!-- Thêm vào giỏ hàng -->
                             <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
@@ -49,6 +37,9 @@
                 </div>
             @endforeach
         </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        {{ $sanPhams->links('pagination::bootstrap-5') }}
     </div>
 @endsection
 

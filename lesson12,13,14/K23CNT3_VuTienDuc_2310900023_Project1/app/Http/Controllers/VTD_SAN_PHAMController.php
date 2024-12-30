@@ -8,6 +8,9 @@ use App\Models\vtd_LOAI_SAN_PHAM; // Sử dụng Model User để thao tác vớ
 use Illuminate\Support\Facades\Storage;  // Use this for file handling
 class VTD_SAN_PHAMController extends Controller
 {
+
+
+    
     // In your controller
     public function search(Request $request)
     {
@@ -26,15 +29,55 @@ class VTD_SAN_PHAMController extends Controller
         // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
         return view('vtduser.search', compact('products', 'search'));
     }
+
+    public function search1(Request $request)
+    {
+        // Lấy từ khóa tìm kiếm từ input của người dùng
+        $search = $request->input('search');
     
+        // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+        if ($search) {
+            // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+            $products = vtd_SAN_PHAM::where('vtdTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+            $products = vtd_SAN_PHAM::paginate(10);
+        }
+    
+        // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
+        return view('vtduser.search1', compact('products', 'search'));
+    }
+
+
+    // search sap pham admin
+    public function searchAdmins(Request $request)
+    {
+        // Lấy từ khóa tìm kiếm từ input của người dùng
+        $search = $request->input('search');
+    
+        // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+        if ($search) {
+            // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+            $products = vtd_SAN_PHAM::where('vtdTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+            $products = vtd_SAN_PHAM::paginate(10);
+        }
+    
+        // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
+        return view('vtdAdmins.vtdsanpham.vtd-search', compact('products', 'search'));
+    }
 
      //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()
 {
+
+
     // Apply pagination and filter by vtdTrangThai
-    $vtdsanphams = vtd_SAN_PHAM::where('vtdTrangThai', 0) // Filter by active status
-                               ->paginate(5);  // Paginate results, 10 per page
+    $vtdsanphams = vtd_SAN_PHAM::where('vtdTrangThai', 0); 
+                   // Phân trang kết quả, thay 10 bằng số lượng bạn muốn mỗi trang
+     $vtdsanphams = vtd_SAN_PHAM::paginate(5);    
     
     // Pass the paginated products to the view
     return view('vtdAdmins.vtdsanpham.vtd-list', ['vtdsanphams' => $vtdsanphams]);

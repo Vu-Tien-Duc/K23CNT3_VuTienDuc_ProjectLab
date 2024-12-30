@@ -81,7 +81,7 @@
     <hr style="border: 2px solid black">
 
     <!-- Navbar (Main Navigation Menu) -->
-    @include('_layouts.frontend._menu1') <!-- Menu navigation (with toggle functionality) -->
+    @include('_layouts.frontend._menu') <!-- Menu navigation (with toggle functionality) -->
     <hr style="border: 2px solid black">
 
     <!-- Main Content Section -->

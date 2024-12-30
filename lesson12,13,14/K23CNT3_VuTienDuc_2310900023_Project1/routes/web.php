@@ -59,7 +59,8 @@ Route::get('/vtd-admins/vtd-loai-san-pham/vtd-detail/{id}',[VTD_LOAI_SAN_PHAMCon
 Route::get('/vtd-admins/vtd-loai-san-pham/vtd-delete/{id}',[VTD_LOAI_SAN_PHAMController::class,'vtdDelete'])->name('vtdadmin.vtdloaisanpham.vtdDelete');
 
 // san pham--------------------------------------------------------------------------------------------------------------------------------------
-
+// search
+Route::get('/vtd-admins/vtd-san-pham/search', [VTD_SAN_PHAMController::class, 'searchAdmins'])->name('vtduser.searchAdmins');
 // list
 
 Route::get('/vtd-admins/vtd-san-pham',[VTD_SAN_PHAMController::class,'vtdList'])->name('vtdadims.vtdsanpham');
@@ -177,6 +178,7 @@ Route::get('/vtd-user1', [HomeController::class, 'index1'])->name('vtduser.home1
 Route::get('/vtd-user/show/{id}', [HomeController::class, 'show'])->name('vtduser.show');
 // search
 Route::get('/search', [VTD_SAN_PHAMController::class, 'search'])->name('vtduser.search');
+Route::get('/search1', [VTD_SAN_PHAMController::class, 'search1'])->name('vtduser.search1');
 
 Route::get('/vtduser/login', [VTD_LOGIN_USERController::class, 'vtdLogin'])->name('vtduser.login');
 Route::post('/vtduser/login', [VTD_LOGIN_USERController::class, 'vtdLoginSubmit'])->name('vtduser.vtdLoginSubmit');
@@ -192,3 +194,12 @@ route::get('/vtd-user/support',function()
 // signup
 Route::get('/vtd-user/signup', [VTD_SIGNUPController::class, 'vtdsignup'])->name('vtduser.vtdsignup');
 Route::post('/vtd-user/signup', [VTD_SIGNUPController::class, 'vtdsignupSubmit'])->name('vtduser.vtdsignupSubmit');
+
+
+
+// Route để hiển thị sản phẩm trong trang thanh toán
+Route::get('/vtd-user/thanhtoan/{product_id}', [VTD_CT_HOA_DONController::class, 'vtdthanhtoan'])->name('vtduser.vtdthanhtoan');
+
+// Route để xử lý thanh toán
+Route::post('/vtd-user/thanhtoan', [VTD_CT_HOA_DONController::class, 'storeThanhtoan'])->name('vtduser.storeThanhtoan');
+

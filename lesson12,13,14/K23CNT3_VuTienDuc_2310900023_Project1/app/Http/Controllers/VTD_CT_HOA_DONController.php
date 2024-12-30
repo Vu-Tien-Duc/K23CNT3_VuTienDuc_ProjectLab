@@ -9,7 +9,49 @@ use App\Models\vtd_HOA_DON;
 
 class VTD_CT_HOA_DONController extends Controller
 {
-    //
+    // thanh toán
+
+    
+  // thanh toán
+ // Hiển thị sản phẩm khi nhấn vào "Mua"
+ public function vtdthanhtoan($product_id)
+ {
+     // Lấy sản phẩm theo ID sử dụng model
+     $sanPham = vtd_SAN_PHAM::find($product_id);
+
+     // Kiểm tra nếu không có sản phẩm
+     if (!$sanPham) {
+         abort(404, 'Sản phẩm không tồn tại');
+     }
+
+     // Trả về view với thông tin sản phẩm
+     return view('vtduser.thanhtoan', compact('sanPham'));
+ }
+
+ // Lưu thông tin thanh toán (chỉ cần lưu vào bảng thanh toán nếu cần, ở đây ta không tạo bảng ThanhToan)
+ public function storeThanhtoan(Request $request)
+ {
+     // Lấy thông tin sản phẩm từ model SanPham
+     $sanPham = vtd_SAN_PHAM::find($request->product_id);
+
+     // Kiểm tra nếu không có sản phẩm
+     if (!$sanPham) {
+         return redirect()->route('home')->with('error', 'Sản phẩm không tồn tại');
+     }
+
+     // Tính tổng tiền thanh toán
+     $tongTien = $request->vtdSoLuong * $sanPham->vtdDonGia;
+
+     // Nếu muốn lưu vào bảng thanh toán, bạn có thể thêm logic ở đây.
+     // Nhưng ở đây chỉ cần hiển thị thông tin và tính tổng tiền.
+
+     return view('vtduser.thanhtoan', [
+         'sanPham' => $sanPham,
+         'vtdSoLuong' => $request->vtdSoLuong,
+         'tongTien' => $tongTien
+     ]);
+ }
+
       //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()

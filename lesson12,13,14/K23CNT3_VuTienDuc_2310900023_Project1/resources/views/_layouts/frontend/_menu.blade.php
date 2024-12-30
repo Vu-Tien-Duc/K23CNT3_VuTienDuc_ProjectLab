@@ -10,24 +10,23 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-white text-2xl font-bold">BUYPHONE</h1>
             <ul class="flex space-x-4 text-white">
+               
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="{{route('vtduser.home')}}">Trang Chủ</a>
+                    <a class="nav-link hover:text-gray-300" href="{{ route('vtduser.search', ['search' => 'iPhone']) }}">iPhone</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/iphone">iPhone</a>
+                    <a class="nav-link hover:text-gray-300" href="{{ route('vtduser.search', ['search' => 'Vivo']) }}">Vivo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/vivo">Vivo</a>
+                    <a class="nav-link hover:text-gray-300" href="{{ route('vtduser.search', ['search' => 'Xiaomi']) }}">Xiaomi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/xiaomi">Xiaomi</a>
+                    <a class="nav-link hover:text-gray-300" href="{{ route('vtduser.search', ['search' => 'Samsung']) }}">Samsung</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/samsung">Samsung</a>
+                    <a class="nav-link hover:text-gray-300" href="{{ route('vtduser.search', ['search' => 'Huawei']) }}">Huawei</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/huawei">Huawei</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link hover:text-gray-300" href="/contact">Liên Hệ</a>
                 </li>

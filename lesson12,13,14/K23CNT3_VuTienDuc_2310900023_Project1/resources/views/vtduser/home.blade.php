@@ -23,22 +23,25 @@
                             <a href="{{ route('vtduser.show', $sanPham->id) }}" class="btn btn-primary btn-sm">Xem Chi Tiết</a>
 
                             <!-- Nút Mua và icon giỏ hàng -->
-                            <a href=" "   
+                            <a href="{{route('vtduser.login')}} "   
                                class="btn btn-success btn-sm" 
-                               onclick="return confirm('Bạn muốn mua {{ $sanPham->vtdTenSanPham }} này không ?');" 
-                               title="Mua">
+                              >
                                 <i class="fa fa-shopping-cart"></i> Mua
                             </a>
 
                             <!-- Thêm vào giỏ hàng -->
-                            <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
+                            <a href="{{route('vtduser.login')}}"><button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
                                 <i class="fa fa-cart-plus"></i> Thêm vào giỏ
                             </button>
+                        </a>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        {{ $sanPhams->links('pagination::bootstrap-5') }}
     </div>
 @endsection
 

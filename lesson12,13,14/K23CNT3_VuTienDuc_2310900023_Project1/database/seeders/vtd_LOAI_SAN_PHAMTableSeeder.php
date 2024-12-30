@@ -14,24 +14,20 @@ class vtd_LOAI_SAN_PHAMTableSeeder extends Seeder
     {
         //
         DB::table('vtd_LOAI_SAN_PHAM')->insert([
-            'vtdMaLoai'=>'L001',
-            'vtdTenLoai'=>'Cây Cảnh Văn Phòng',
+            'vtdMaLoai'=>'IP',
+            'vtdTenLoai'=>'IPHONE',
             'vtdTrangThai'=>0
         ]);
         DB::table('vtd_LOAI_SAN_PHAM')->insert([
-            'vtdMaLoai'=>'L002',
-            'vtdTenLoai'=>'Cây Để Bàn',
+            'vtdMaLoai'=>'SS',
+            'vtdTenLoai'=>'SAMSUNG',
             'vtdTrangThai'=>0
         ]);
         DB::table('vtd_LOAI_SAN_PHAM')->insert([
-            'vtdMaLoai'=>'L003',
-            'vtdTenLoai'=>'Cây Cảnh Phong Thủy',
+            'vtdMaLoai'=>'HW',
+            'vtdTenLoai'=>'HUAWAI',
             'vtdTrangThai'=>0
         ]);
-        DB::table('vtd_LOAI_SAN_PHAM')->insert([
-            'vtdMaLoai'=>'L004',
-            'vtdTenLoai'=>'Cây Thủy Canh',
-            'vtdTrangThai'=>0
-        ]);
+       
     }
 }

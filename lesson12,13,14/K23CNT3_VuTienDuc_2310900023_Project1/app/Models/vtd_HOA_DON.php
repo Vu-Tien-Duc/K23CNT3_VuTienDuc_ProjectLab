@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class vtd_HOA_DON extends Model
 {
     use HasFactory;
-    protected $table = 'vtd_HOA_DON';
+
+    protected $table = 'vtd_hoa_don';
+
     protected $primaryKey = 'id';
-    public $incrementing = false; // Nếu vtdnhacc không phải là auto-increment
-    public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
+
+    public $timestamps = true;
+
+    // Quan hệ ngược lại với vtd_CT_HOA_DON
+   
 }
