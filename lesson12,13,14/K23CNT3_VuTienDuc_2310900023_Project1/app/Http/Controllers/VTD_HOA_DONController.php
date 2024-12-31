@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\vtd_HOA_DON; 
 use App\Models\vtd_KHACH_HANG; 
+use App\Models\vtd_SAN_PHAM; 
 class VTD_HOA_DONController extends Controller
 {
     //
+    public function show($hoaDonId,$sanPhamId)
+    {
+        // Lấy hóa đơn từ ID
+        $hoaDon = vtd_HOA_DON::findOrFail($hoaDonId);
+        $sanPham = vtd_SAN_PHAM::findOrFail($sanPhamId);
+
+        // Trả về view để hiển thị thông tin hóa đơn
+        return view('vtduser.hoadonshow', compact('hoaDon','sanPham'));
+    }
+
+
       //admin CRUD
     // list -----------------------------------------------------------------------------------------------------------------------------------------
     public function vtdList()

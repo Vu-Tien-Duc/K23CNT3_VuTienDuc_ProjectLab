@@ -4,13 +4,17 @@
 
 @section('content-body')
     <div class="container">
+
         <h1>Chào mừng đến với Trang Chủ</h1>
     
+       
+
         <p>Đây là giao diện người dùng, nơi bạn có thể xem thông tin và tương tác với các tính năng của website.</p>
 
         <!-- Danh sách sản phẩm -->
         <div class="row">
             @foreach ($sanPhams as $sanPham)
+            
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <img src="{{ asset('storage/' . $sanPham->vtdHinhAnh) }}" class="card-img-top product-img" alt="{{ $sanPham->vtdTenSanPham }}">
@@ -22,16 +26,17 @@
                             <!-- Nút xem chi tiết -->
                             <a href="{{ route('vtduser.show', $sanPham->id) }}" class="btn btn-primary btn-sm flex " style="justify-content: center">Xem Chi Tiết</a>
 
-                            <!-- Nút Mua và icon giỏ hàng -->
-                            <a href="{{ route('vtduser.vtdthanhtoan', ['product_id' => $sanPham->id]) }}" class="btn btn-primary btn-sm">
+                          <!-- Nút Mua và icon giỏ hàng -->
+                            <a href="{{ route('sanpham.show', ['sanPham' => $sanPham->id]) }}" class="btn btn-primary btn-sm">
                                 <i class="fa fa-shopping-cart"></i> Mua
                             </a>
                             
 
                             <!-- Thêm vào giỏ hàng -->
-                            <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
-                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ
-                            </button>
+                        <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
+                        <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+
                         </div>
                     </div>
                 </div>

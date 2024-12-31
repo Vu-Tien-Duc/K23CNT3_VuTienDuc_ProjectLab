@@ -71,8 +71,10 @@
           </form>
         </div>
         <div>
-          <i class="fas fa-shopping-cart text-2xl"></i>
-        </div>
+          <i class="fas fa-shopping-cart text-2xl" id="cart-icon"></i>
+          <span id="cart-count" class="badge bg-primary">0</span>
+      </div>
+      
       </div>
     </div>
   </div>

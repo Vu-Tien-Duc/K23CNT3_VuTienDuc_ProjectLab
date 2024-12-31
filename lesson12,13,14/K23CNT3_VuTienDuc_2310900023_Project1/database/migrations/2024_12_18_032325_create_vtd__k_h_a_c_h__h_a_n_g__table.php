@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('vtdMaKhachHang',255)->unique();
             $table->string('vtdHoTenKhachHang',255);
-            $table->string('vtdEmail',255);
+            $table->string('vtdEmail',255)->unique();
             $table->string('vtdMatKhau',255);
-            $table->string('vtdDienThoai',255);
+            $table->string('vtdDienThoai',255)->unique();
             $table->string('vtdDiaChi',255);
             $table->date('vtdNgayDangKy');
             $table->tinyInteger('vtdTrangThai');

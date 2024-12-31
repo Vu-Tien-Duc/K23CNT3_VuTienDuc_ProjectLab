@@ -27,7 +27,11 @@ class vtd_SAN_PHAM extends Model
         'vtdMoTa',
         'vtdTrangThai',
     ];
-
+    public function chiTietHoaDon()
+    {
+        return $this->hasMany(vtd_CT_HOA_DON::class, 'vtdSanPhamID','id');
+    }
+   
 
 }
 

@@ -202,4 +202,31 @@ Route::get('/vtd-user/thanhtoan/{product_id}', [VTD_CT_HOA_DONController::class,
 
 // Route để xử lý thanh toán
 Route::post('/vtd-user/thanhtoan', [VTD_CT_HOA_DONController::class, 'storeThanhtoan'])->name('vtduser.storeThanhtoan');
+// create hóa đơn user
+
+
+// tạo bảng hóa đơn
+Route::get('san-pham/{sanPham}', [VTD_CT_HOA_DONController::class, 'show'])->name('sanpham.show');
+Route::post('mua-san-pham/{sanPham}', [VTD_CT_HOA_DONController::class, 'store'])->name('hoadon.store');
+
+// xem bảng Hóa Đơn mới Tạo
+Route::get('hoa-don/{hoaDonId}/san-pham/{sanPhamId}', [VTD_HOA_DONController::class, 'show'])->name('hoadon.show');
+
+
+
+// tạo bảng chi tiết hóa đơn
+
+
+// Route để tạo mới chi tiết hóa đơn
+Route::get('/cthoadon/{hoaDonId}/{sanPhamId}', [VTD_CT_HOA_DONController::class, 'create'])->name('cthoadon.create');
+
+// Route để lưu chi tiết hóa đơn
+Route::post('/cthoadon/store', [VTD_CT_HOA_DONController::class, 'storecthoadon'])->name('cthoadon.storecthoadon');
+
+// Route để hiển thị chi tiết hóa đơn
+Route::get('/hoa-don-id/{hoaDonId}/san-pham-id/{sanPhamId}', [VTD_CT_HOA_DONController::class, 'cthoadonshow'])->name('cthoadon.cthoadonshow');
+
+
+// giỏ hàng
+
 

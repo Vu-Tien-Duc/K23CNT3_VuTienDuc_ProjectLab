@@ -15,14 +15,7 @@
         <button type="submit" class="btn">Thanh toán</button>
     </form>
     
-    <!-- Nút xem chi tiết hóa đơn chỉ hiển thị sau khi thanh toán -->
-    @if(session('vtdMaHoaDon'))
-        <a href="{{ route('sanpham.showchitiethoadon', ['id' => session('vtdMaHoaDon')]) }}">
-            <button class="btn1">Xem Chi Tiết Hóa Đơn</button>
-        </a>
-    @endif
-</div>
-
+   
 @if(isset($tongTien))
     <h3 class="total-price" style="text-align: center">Tổng tiền: {{ number_format($tongTien, 0, ',', '.') }} VND</h3>
 @endif

@@ -9,7 +9,6 @@ class vtd_KHACH_HANG extends Authenticatable // Kế thừa từ Authenticatable
 {
     use HasFactory;
 
-   use HasFactory;
 
     protected $table = 'vtd_KHACH_HANG';
     protected $primaryKey = 'vtdMaKhachHang'; // Đảm bảo rằng vtdMaKhachHang là khóa chính
@@ -25,10 +24,11 @@ class vtd_KHACH_HANG extends Authenticatable // Kế thừa từ Authenticatable
     protected $dates = ['vtdNgayDangKy'];
 
     public function setVtdMatKhauAttribute($value)
-    {
-        if (!empty($value)) {
-            $this->attributes['vtdMatKhau'] = Hash::make($value);
-        }
+{
+    if (!empty($value)) {
+        $this->attributes['vtdMatKhau'] = Hash::make($value);
     }
+}
+
     
 }
