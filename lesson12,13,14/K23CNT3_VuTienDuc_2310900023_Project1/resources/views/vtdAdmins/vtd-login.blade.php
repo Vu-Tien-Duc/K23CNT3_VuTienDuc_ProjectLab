@@ -198,7 +198,7 @@
 
         </form>
 
-        <a href="#" class="next hidden-when-remembered" id="goBackLink">Go Back</a>
+       
     </div>
 
     <script>

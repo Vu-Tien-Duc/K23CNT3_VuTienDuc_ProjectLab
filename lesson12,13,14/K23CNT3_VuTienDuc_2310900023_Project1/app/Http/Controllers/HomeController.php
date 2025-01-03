@@ -9,6 +9,21 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    // Giỏ hàng
+    public function giohang()
+    {
+        
+        // Lấy giỏ hàng từ session
+        $cart = Session::get('cart', []);
+        
+        // Số lượng sản phẩm trong giỏ hàng
+        $cartCount = count($cart);
+
+        // Trả về view với số lượng giỏ hàng
+        return view('_layouts.frontend._headerTitle1', compact('cartCount'));
+    }
+
+
     // Trang chủ - hiển thị tất cả sản phẩm
     public function index()
     {

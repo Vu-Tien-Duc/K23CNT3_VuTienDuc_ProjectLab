@@ -27,18 +27,17 @@
                                 <!-- Mua and Thêm vào giỏ hàng (on the second row) -->
                                 <div class="flex gap-4">
                                     <!-- Mua -->
-                                    <a href="javascript:void(0);"   
-                                       class="bg-green-500 text-white py-2 px-4 rounded-md text-sm hover:bg-green-600 transition duration-300" 
-                                       onclick="return confirm('Bạn muốn mua {{ $sanpham->vtdTenSanPham }} này không ?');" 
-                                       title="Mua">
-                                        <i class="fa fa-shopping-cart"></i> Mua
-                                    </a>
-                            
-                                    <!-- Thêm vào giỏ hàng -->
-                                    <button type="button" class="bg-yellow-500 text-white py-2 px-4 rounded-md text-sm hover:bg-yellow-600 transition duration-300 add-to-cart-btn" 
-                                            data-id="{{ $sanpham->id }}" data-name="{{ $sanpham->vtdTenSanPham }}">
-                                        <i class="fa fa-cart-plus"></i> Thêm vào giỏ
-                                    </button>
+                                    <a href="{{route('vtduser.login')}} "   
+                               class="btn btn-success btn-sm" 
+                              >
+                                <i class="fa fa-shopping-cart"></i> Mua
+                            </a>
+
+                            <!-- Thêm vào giỏ hàng -->
+                            <a href="{{route('vtduser.login')}}"><button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
+                                <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                            </button>
+                        </a>
                                 </div>
                             </div>
                             

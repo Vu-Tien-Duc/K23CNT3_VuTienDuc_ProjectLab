@@ -8,7 +8,7 @@
 <body>
     <nav class="bg-gradient-to-r from-blue-500 to-purple-500 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-2xl font-bold">BUYPHONE</h1>
+            <h1 class="text-white text-2xl font-bold">PHONESTORE</h1>
             <ul class="flex space-x-4 text-white">
                
                 <li class="nav-item">
@@ -28,10 +28,10 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/contact">Liên Hệ</a>
+                    <a class="nav-link hover:text-gray-300" href="{{route('vtduser.lienhe')}}">Liên Hệ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link hover:text-gray-300" href="/about">Giới Thiệu</a>
+                    <a class="nav-link hover:text-gray-300" href="{{route('vtduser.gioithieu')}}">Giới Thiệu</a>
                 </li>
             
             </ul>

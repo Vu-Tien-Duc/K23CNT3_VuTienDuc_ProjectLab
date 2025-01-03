@@ -12,31 +12,31 @@
 
         <!-- Hóa đơn ID -->
         <div class="form-group">
-            <label for="vtdHoaDonID">Hóa Đơn ID</label>
+            <label for="vtdHoaDonID" style="color: black">Hóa Đơn ID</label>
             <input type="number" name="vtdHoaDonID" value="{{ $hoaDon->id }}" class="form-control" readonly>
         </div>
 
         <!-- Sản phẩm ID -->
         <div class="form-group">
-            <label for="vtdSanPhamID">Sản Phẩm ID</label>
+            <label for="vtdSanPhamID"  style="color: black">Sản Phẩm ID</label>
             <input type="number" name="vtdSanPhamID" value="{{ $sanPham->id }}" class="form-control" readonly>
         </div>
 
         <!-- Số lượng sản phẩm -->
         <div class="form-group">
-            <label for="vtdSoLuong">Số Lượng</label>
+            <label for="vtdSoLuong"  style="color: black">Số Lượng</label>
             <input type="number" name="vtdSoLuong" id="vtdSoLuong" value="{{ $soLuong }}" min="1" max="{{ $sanPham->vtdSoLuong }}" class="form-control" required>
         </div>
 
         <!-- Đơn Giá -->
         <div class="form-group">
-            <label for="vtdDonGiaMua">Đơn Giá</label>
+            <label for="vtdDonGiaMua"  style="color: black">Đơn Giá</label>
             <input type="text" class="form-control" value="{{ number_format($sanPham->vtdDonGia, 0, ',', '.') }} VND" disabled>
         </div>
 
         <!-- Thành Tiền (tính toán từ Số Lượng và Đơn Giá) -->
         <div class="form-group">
-            <label for="vtdThanhTien">Thành Tiền</label>
+            <label for="vtdThanhTien"  style="color: black">Thành Tiền</label>
             <input type="text" class="form-control" id="vtdThanhTien" value="{{ number_format($sanPham->vtdDonGia * $soLuong, 0, ',', '.') }} VND" disabled>
         </div>
 

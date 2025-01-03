@@ -42,7 +42,7 @@
               <i class="fas fa-question-circle"></i> Hỗ Trợ
             </a>
           <a class="mr-4 hover:underline" href="#"><i class="fas fa-globe"></i> Tiếng Việt</a>
-          <a class="mr-4 hover:underline" href="#">Đăng Ký</a>
+          <a class="mr-4 hover:underline" href="{{route('vtduser.vtdsignup')}}">Đăng Ký</a>
           <a class="hover:underline" href="{{route('vtduser.login')}}">Đăng Nhập</a>
         </div>
       </div>
@@ -50,7 +50,7 @@
       <div class="flex items-center py-4">
         <div class="flex items-center">
           <a href="{{route('vtduser.home')}}"><img alt=" logo" class="mr-2" height="40" src="/storage/img/san_pham/logoD.jpg" width="40"/></a>
-          <span class="text-2xl font-bold">buyphone</span>
+          <span class="text-2xl font-bold">PHONESTORE</span>
         </div>
         <div class="flex-grow mx-4">
           <form action="{{route('vtduser.search')}}" method="GET" class="flex">

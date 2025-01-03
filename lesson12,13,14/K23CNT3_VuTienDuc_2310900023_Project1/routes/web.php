@@ -228,5 +228,22 @@ Route::get('/hoa-don-id/{hoaDonId}/san-pham-id/{sanPhamId}', [VTD_CT_HOA_DONCont
 
 
 // giỏ hàng
+use App\Http\Controllers\CartController;
+
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+
+// liên hệ (_menu) 
+route::get('/vtduser-lienhe',function(){
+    return view('vtduser.lienhe');
+})->name('vtduser.lienhe');
+// giới thiệt (_menu) 
+route::get('/vtduser-gioithieu',function(){
+    return view('vtduser.gioithieu');
+})->name('vtduser.gioithieu');
 
 
+// thông tin cá nhân
+use App\Http\Controllers\VTD_TTNHUOIDUNGController;
+// Route hiển thị form chỉnh sửa thông tin khách hàng
+Route::get('/vtd-user/vtd-edit/{id}', [VTD_TTNHUOIDUNGController::class, 'vtdEdit'])->name('vtduser.tt.vtdedit');
+Route::post('/vtd-user/vtd-edit/{id}', [VTD_TTNHUOIDUNGController::class, 'vtdEditSubmit'])->name('vtduser.tt.vtdEditSubmit');

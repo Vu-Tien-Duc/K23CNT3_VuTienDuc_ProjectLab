@@ -81,7 +81,7 @@
     <hr style="border: 2px solid black">
 
     <!-- Navbar (Main Navigation Menu) -->
-    @include('_layouts.frontend._menu') <!-- Menu navigation (with toggle functionality) -->
+    @include('_layouts.frontend._menu1') <!-- Menu navigation (with toggle functionality) -->
     <hr style="border: 2px solid black">
 
     <!-- Main Content Section -->
@@ -96,8 +96,14 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Tên Công Ty. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 PHONESTORE.</p>
     </footer>
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

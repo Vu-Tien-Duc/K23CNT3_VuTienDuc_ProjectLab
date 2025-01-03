@@ -2,69 +2,83 @@ CREATE DATABASE ShoppingCart
 use ShoppingCart 
 GO
 CREATE TABLE  vtd_QUAN_TRI(			
-  vtd_ID INT PRIMARY KEY IDENTITY,
-  vtd_TaiKhoan nVARCHAR(255) UNIQUE ,
-  vtd_MatKhau nVARCHAR(255)  ,
-   vtd_TrangThai tinyint  
+  id INT PRIMARY KEY IDENTITY,
+  vtdTaiKhoan nVARCHAR(255) UNIQUE ,
+  vtdMatKhau nVARCHAR(255)  ,
+   vtdTrangThai tinyint  
 );
 go
 
 CREATE TABLE  vtd_LOAI_SAN_PHAM(
-  vtd_ID INT PRIMARY KEY IDENTITY,
-    vtd_MaLoai VARCHAR(255) UNIQUE ,
-	  vtd_TenLoai VARCHAR(255)  ,
-	    vtd_TrangThai tinyint  
+  id INT PRIMARY KEY IDENTITY,
+    vtdMaLoai VARCHAR(255) UNIQUE ,
+	  vtdTenLoai VARCHAR(255)  ,
+	    vtdTrangThai tinyint  
 );
 go
 
 CREATE TABLE  vtd_SAN_PHAM(
-  vtd_ID INT PRIMARY KEY IDENTITY,
-  vtd_MaSanPham VARCHAR(255) UNIQUE ,
-  vtd_TenSanPham VARCHAR(255)  ,
-  vtd_HinhAnh VARCHAR(255)  ,
-  vtd_SoLuong int  ,
-  vtd_DonGia float  ,
-  vtd_MaLoai int REFERENCES vtd_LOAI_SAN_PHAM(vtd_ID) ,
-  vtd_TrangThai tinyint  
+  id INT PRIMARY KEY IDENTITY,
+  vtdMaSanPham VARCHAR(255) UNIQUE ,
+  vtdTenSanPham VARCHAR(255)  ,
+  vtdHinhAnh VARCHAR(255)  ,
+  vtdSoLuong int  ,
+  vtdDonGia float  ,
+  vtdMaLoai int REFERENCES vtd_LOAI_SAN_PHAM(id) ,
+  vtdMoTa nvarchar(255),
+  vtdTrangThai tinyint  
 )
 go
 
 CREATE TABLE  vtd_KHACH_HANG(
-  vtd_ID INT PRIMARY KEY IDENTITY,
-  vtd_MaKhachHang VARCHAR(255) UNIQUE ,
-  vtd_HoTenKhachHang VARCHAR(255)  ,
-  vtd_Email VARCHAR(255) UNIQUE ,
-  vtd_MatKhau VARCHAR(255)  ,
-  vtd_DienThoai VARCHAR(10) UNIQUE ,
-  vtd_DiaChi VARCHAR(255)  ,
-  vtd_NgayDangKy datetime  ,
-  vtd_TrangThai tinyint  ,
+  id INT PRIMARY KEY IDENTITY,
+  vtdMaKhachHang VARCHAR(255) UNIQUE ,
+  vtdHoTenKhachHang VARCHAR(255)  ,
+  vtdEmail VARCHAR(255) UNIQUE ,
+  vtdMatKhau VARCHAR(255)  ,
+  vtdDienThoai VARCHAR(10) UNIQUE ,
+  vtdDiaChi VARCHAR(255)  ,
+  vtdNgayDangKy datetime  ,
+  vtdTrangThai tinyint  ,
 
   )
   go
 
   CREATE TABLE  vtd_HOA_DON(
-  vtd_ID INT PRIMARY KEY IDENTITY,
-  vtd_MaHoaDon VARCHAR(255) UNIQUE ,
-  vtd_MaKhachHang INT REFERENCES vtd_KHACH_HANG(vtd_ID) ,
-  vtd_NgayHoaDon datetime  ,
-  vtd_NgayNhan datetime  ,
-  vtd_HoTenKhachHang VARCHAR(255)  ,
-  vtd_Email VARCHAR(255)  ,
-  vtd_DienThoai VARCHAR(10)  ,
-  vtd_DiaChi VARCHAR(255)  ,
-  vtd_TongTriGia float  ,
-  vtd_TrangThai tinyint  ,
+  id INT PRIMARY KEY IDENTITY,
+  vtdMaHoaDon VARCHAR(255) UNIQUE ,
+  vtdMaKhachHang INT REFERENCES vtd_KHACH_HANG(id) ,
+  vtdNgayHoaDon datetime  ,
+  vtdNgayNhan datetime  ,
+  vtdHoTenKhachHang VARCHAR(255)  ,
+  vtdEmail VARCHAR(255)  ,
+  vtdDienThoai VARCHAR(10)  ,
+  vtdDiaChi VARCHAR(255)  ,
+  vtdTongTriGia float  ,
+  vtdTrangThai tinyint  ,
 )
 go
 
 CREATE TABLE  vtd_CT_HOA_DON(
-  vtd_ID INT PRIMARY KEY IDENTITY,
-  vtd_HoaDonID INT REFERENCES vtd_HOA_DON(vtd_ID) ,
-  vtd_SanPhamID INT REFERENCES vtd_SAN_PHAM(vtd_ID) ,
-  vtd_SoLuongMua INT  ,
-  vtd_DonGiaMua float  ,
-  vtd_ThanhTien float  ,
-  vtd_TrangThai tinyint  ,
+  id INT PRIMARY KEY IDENTITY,
+  vtdHoaDonID INT REFERENCES vtd_HOA_DON(id) ,
+  vtdSanPhamID INT REFERENCES vtd_SAN_PHAM(id) ,
+  vtdSoLuongMua INT  ,
+  vtdDonGiaMua float  ,
+  vtdThanhTien float  ,
+  vtdTrangThai tinyint  ,
+) 
+go
+
+CREATE TABLE  vtd_TIN_TUC(
+  id INT PRIMARY KEY IDENTITY,
+ vtdMaTT nvarchar(255) unique,
+ vtdTieuDe nvarchar(255),
+ vtdMoTa nvarchar(255),
+ vtdNoiDung nvarchar(255),
+ vtdNayDangTin date,
+ vtdNgayCapNhap date,
+ vtdHinhAnh nvarchar(255),
+ vtdTrangThai tinyint,
 ) 
 go

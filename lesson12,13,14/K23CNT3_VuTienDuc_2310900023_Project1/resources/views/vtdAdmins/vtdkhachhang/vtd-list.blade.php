@@ -12,6 +12,7 @@
                 </a>
             </div>
         </div>
+
         <div class="row">
             <table class="table table-striped table-bordered table-hover">
                 <thead>
@@ -44,7 +45,7 @@
                             <td>{{ $item->vtdMatKhau }}</td>
                             <td>{{ $item->vtdDienThoai }}</td>
                             <td>{{ $item->vtdDiaChi }}</td>
-                            <td>{{ $item->vtdNgayDangKy }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->vtdNgayDangKy)->format('d/m/Y') }}</td> <!-- Định dạng lại ngày đăng ký -->
                             
                             <td>
                                 @if($item->vtdTrangThai == 0)
@@ -73,11 +74,11 @@
                                     </a>
                                 </div>
                             </td>
-                            
+                        </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted">
-                                Chưa có thông tin Khách Hàng 
+                            <td colspan="10" class="text-center text-muted">
+                                Chưa có thông tin Khách Hàng
                             </td>
                         </tr>
                     @endforelse

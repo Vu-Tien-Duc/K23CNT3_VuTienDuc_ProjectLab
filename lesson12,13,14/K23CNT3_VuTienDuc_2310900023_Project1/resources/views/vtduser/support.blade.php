@@ -132,13 +132,13 @@ ul li {
         </div>
         <div class="faq-item bg-gray-50 p-4 rounded shadow mb-4">
             <h3 class="font-bold">3. Làm thế nào để liên hệ với bộ phận hỗ trợ?</h3>
-            <p>Bạn có thể liên hệ với bộ phận hỗ trợ qua email tại <a href="mailto:support@example.com" class="text-blue-500">support@example.com</a> hoặc gọi điện thoại đến số 123-456-789.</p>
+            <p>Bạn có thể liên hệ với bộ phận hỗ trợ qua email tại <a href="mailto:phonestore@gmail.com" class="text-blue-500">phonestore@gmail.com</a> hoặc gọi điện thoại đến số 123-456-789.</p>
         </div>
 
         <h2 class="text-2xl font-semibold mt-6 mb-2">Thông Tin Liên Hệ</h2>
         <p>Nếu bạn cần thêm sự trợ giúp, vui lòng liên hệ với chúng tôi qua các kênh sau:</p>
         <ul class="list-disc pl-5">
-            <li>Email: <a href="mailto:support@example.com" class="text-blue-500">support@example.com</a></li>
+            <li>Email: <a href="mailto:phonestore@gmail.com" class="text-blue-500">phonestore@gmail.com</a></li>
             <li>Điện thoại: 0396706596</li>
             <li>Facebook: <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-blue-500">Facebook Page</a></li>
             <li>Instagram: <a href="https://www.instagram.com/yourprofile" target="_blank" class="text-blue-500">Instagram Profile</a></li>

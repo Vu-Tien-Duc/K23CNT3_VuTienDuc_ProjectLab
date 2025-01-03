@@ -4,7 +4,7 @@
 
 @section('content-body')
     <div class="container">
-
+       
         <h1>Chào mừng đến với Trang Chủ</h1>
     
        
@@ -33,7 +33,8 @@
                             
 
                             <!-- Thêm vào giỏ hàng -->
-                        <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
+                        <!-- Nút "Thêm vào giỏ hàng" -->
+                    <button type="button" class="btn btn-warning btn-sm add-to-cart-btn" data-id="{{ $sanPham->id }}" data-name="{{ $sanPham->vtdTenSanPham }}">
                         <i class="fa fa-cart-plus"></i> Thêm vào giỏ
                     </button>
 
@@ -92,42 +93,33 @@
     }
 </style>
 
-<!-- JavaScript to handle confirmation and AJAX -->
+<!-- Thêm phần JavaScript để xử lý thêm vào giỏ -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Function to handle adding items to cart
-    document.querySelectorAll('.add-to-cart-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var productName = btn.getAttribute('data-name');
-            var productId = btn.getAttribute('data-id');
+    $(document).ready(function() {
+        // Lắng nghe sự kiện click vào nút "Thêm vào giỏ hàng"
+        $('.add-to-cart-btn').click(function() {
+            // Lấy id và tên sản phẩm từ thuộc tính data của nút
+            var productId = $(this).data('id');
+            var productName = $(this).data('name');
 
-            var userConfirmed = confirm('Bạn có muốn thêm "' + productName + '" vào giỏ hàng không?');
-            
-            if (userConfirmed) {
-                // AJAX request to add product to the cart
-                fetch('/add-to-cart/' + productId, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ product_id: productId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Sản phẩm đã được thêm vào giỏ hàng!');
-                        // Cập nhật giỏ hàng (nếu cần)
-                        // Ví dụ, cập nhật số lượng giỏ hàng hiển thị trên trang
-                        document.querySelector('.cart-count').innerText = data.cart_count;
-                    } else {
-                        alert('Có lỗi xảy ra, vui lòng thử lại!');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Có lỗi xảy ra, vui lòng thử lại!');
-                });
-            }
+            // Gửi yêu cầu AJAX để thêm sản phẩm vào giỏ
+            $.ajax({
+                url: '{{ route('cart.add') }}', // Đảm bảo route này đúng với route đã tạo ở trên
+                method: 'POST',
+                data: {
+                    product_id: productId,
+                    product_name: productName,
+                    _token: '{{ csrf_token() }}' // Đừng quên gửi token CSRF
+                },
+                success: function(response) {
+                    // Cập nhật số lượng giỏ hàng
+                    $('#cart-count').text(response.cart_count);
+                },
+                error: function(xhr, status, error) {
+                    alert('Đã có lỗi xảy ra! Hãy thử lại sau.');
+                }
+            });
         });
     });
 </script>

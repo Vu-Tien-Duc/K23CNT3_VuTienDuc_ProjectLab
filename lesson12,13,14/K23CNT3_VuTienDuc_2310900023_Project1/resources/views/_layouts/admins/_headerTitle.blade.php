@@ -126,7 +126,7 @@
         <!-- Thông tin tài khoản & Đăng xuất -->
         <div class="d-flex align-items-center">
             <span class="me-3" style="font-size: 14px;">Xin chào, Admin</span>
-            <a href="{{route('admins.vtdLogin')}}" class="text-white text-decoration-none" style="font-size: 14px;">Đăng xuất</a>
+            <a href="{{route('vtduser.home')}}" class="text-white text-decoration-none" style="font-size: 14px;">Đăng xuất</a>
         </div>
     </div>
 </header>

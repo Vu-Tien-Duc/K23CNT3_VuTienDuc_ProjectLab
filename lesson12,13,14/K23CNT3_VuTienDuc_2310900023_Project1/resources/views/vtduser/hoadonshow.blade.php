@@ -28,7 +28,7 @@
                     @endif
                 </p>
             </div>
-            <a href="{{ route('cthoadon.create', ['hoaDonId' => $hoaDon->id, 'sanPhamId' => $sanPham->id]) }}">Xem chi tiết hóa đơn</a>
+            <a href="{{ route('cthoadon.create', ['hoaDonId' => $hoaDon->id, 'sanPhamId' => $sanPham->id]) }}">Tạo chi tiết hóa đơn</a>
 
         </div>
     </div>
