@@ -37,12 +37,32 @@
         }
 
         /* Footer styles */
-        footer {
-            background: #007bff;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
+              /* Footer styles */
+footer {
+    background-color: #007bff; /* Blue background for footer */
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+footer .social-links a {
+    font-size: 30px;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: #ff5733; /* Red hover color for social icons */
+}
+
+footer .social-links {
+    margin-bottom: 20px;
+}
+
+footer .text-sm {
+    font-size: 0.875rem;
+    color: #bbbbbb; /* Light gray text */
+}
 
         /* Navbar customization */
         .navbar-custom {
@@ -95,13 +115,32 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <footer >
+        <div class="container text-center">
+            <!-- Company Info -->
+            <div class="mb-4">
+                <p class="mb-0">&copy; 2025 PHONESTORE</p>
+                <a href="mailto:phonestore@gmail.com" class="text-blue-500" style="color: white">phonestore@gmail.com</a>
+            </div>
+    
+            <!-- Social Links -->
+            <div class="social-links mb-4">
+                <a href="https://www.facebook.com" class="social-icon mx-3 text-white text-2xl hover:text-blue-600 transition-colors" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com" class="social-icon mx-3 text-white text-2xl hover:text-blue-400 transition-colors" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" class="social-icon mx-3 text-white text-2xl hover:text-pink-600 transition-colors" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+    
+            <!-- Footer Bottom -->
+            <div class="text-sm text-gray-400">
+                <p>All rights reserved. Designed by PHONESTORE</p>
+            </div>
         </div>
-        <p>&copy; 2025 PHONESTORE.</p>
     </footer>
     
 

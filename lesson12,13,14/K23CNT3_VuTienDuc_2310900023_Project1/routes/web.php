@@ -245,5 +245,16 @@ route::get('/vtduser-gioithieu',function(){
 // thông tin cá nhân
 use App\Http\Controllers\VTD_TTNHUOIDUNGController;
 // Route hiển thị form chỉnh sửa thông tin khách hàng
-Route::get('/vtd-user/vtd-edit/{id}', [VTD_TTNHUOIDUNGController::class, 'vtdEdit'])->name('vtduser.tt.vtdedit');
-Route::post('/vtd-user/vtd-edit/{id}', [VTD_TTNHUOIDUNGController::class, 'vtdEditSubmit'])->name('vtduser.tt.vtdEditSubmit');
+
+
+Route::get('vtduser/{id}/edit', [VTD_TTNHUOIDUNGController::class, 'vtdEdit'])->name('vtduser.tt.vtdedit');
+Route::post('vtduser/{id}/edit', [VTD_TTNHUOIDUNGController::class, 'vtdEditSubmit'])->name('vtduser.tt.vtdEditSubmit');
+Route::get('vtduser/{id}/change-password', [VTD_TTNHUOIDUNGController::class, 'showChangePasswordForm'])->name('vtduser.changePassword');
+Route::post('vtduser/{id}/change-password', [VTD_TTNHUOIDUNGController::class, 'changePasswordSubmit'])->name('vtduser.changePasswordSubmit');
+
+
+// thông báo
+route::get('vtduser/thongbao',function()
+{
+    return view('vtduser.thongbao');
+})->name('vtduser.thongbao');

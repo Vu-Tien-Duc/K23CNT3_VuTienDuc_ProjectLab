@@ -26,7 +26,7 @@ class VTD_SIGNUPController extends Controller
             'vtdDienThoai' => 'required|numeric|unique:vtd_khach_hang,vtdDienThoai',
             'vtdDiaChi' => 'required|string|max:255',
         ]);
-
+    
         // Generate a new customer ID (vtdMaKhachHang)
         $lastCustomer = vtd_KHACH_HANG::latest('vtdMaKhachHang')->first(); // Get the latest customer to determine the next ID
     
@@ -42,7 +42,7 @@ class VTD_SIGNUPController extends Controller
         $vtdkhachhang->vtdMaKhachHang = $newCustomerID; // Automatically generated ID
         $vtdkhachhang->vtdHoTenKhachHang = $request->vtdHoTenKhachHang;
         $vtdkhachhang->vtdEmail = $request->vtdEmail;
-        $vtdkhachhang->vtdMatKhau = $request->vtdMatKhau; // Encrypt the password
+        $vtdkhachhang->vtdMatKhau = Hash::make($request->vtdMatKhau); // Encrypt the password using Hash::make()
         $vtdkhachhang->vtdDienThoai = $request->vtdDienThoai;
         $vtdkhachhang->vtdDiaChi = $request->vtdDiaChi;
         $vtdkhachhang->vtdNgayDangKy = now(); // Set the current timestamp for registration date
@@ -58,4 +58,5 @@ class VTD_SIGNUPController extends Controller
             return back()->with('error', 'Có lỗi xảy ra, vui lòng thử lại!');
         }
     }
+    
 }

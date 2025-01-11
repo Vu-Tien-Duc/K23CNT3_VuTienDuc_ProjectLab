@@ -9,14 +9,16 @@ use App\Models\vtd_SAN_PHAM;
 class VTD_HOA_DONController extends Controller
 {
     //
-    public function show($hoaDonId,$sanPhamId)
+    public function show($hoaDonId, $sanPhamId)
     {
         // Lấy hóa đơn từ ID
-        $hoaDon = vtd_HOA_DON::findOrFail($hoaDonId);
+        $hoaDon = vtd_HOA_DON::with('chiTietHoaDon')->findOrFail($hoaDonId);
+        
+        // Lấy sản phẩm từ ID
         $sanPham = vtd_SAN_PHAM::findOrFail($sanPhamId);
-
+    
         // Trả về view để hiển thị thông tin hóa đơn
-        return view('vtduser.hoadonshow', compact('hoaDon','sanPham'));
+        return view('vtduser.hoadonshow', compact('hoaDon', 'sanPham'));
     }
 
 

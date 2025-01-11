@@ -5,18 +5,18 @@
     <div class="container">
         <!-- Tiêu đề chính -->
         <div class="row border mb-4">
-            <h1 class="col-12 py-3">Thống Kê Hệ Thống</h1>
+            <h1 class="col-12 py-3 text-center text-white">Thống Kê Hệ Thống</h1>
         </div>
 
         <!-- Các thông tin thống kê cơ bản -->
-        <div class="row">
+        <div class="row mb-4">
             <!-- Số lượng người dùng -->
             <div class="col-md-4 mb-4">
-                <div class="card text-white bg-primary">
-                    <div class="card-header">
+                <div class="card text-white bg-primary shadow-sm border-0">
+                    <div class="card-header bg-primary text-center">
                         <h5 class="mb-0">Số Lượng Người Dùng</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h2 class="card-title">1,250</h2>
                         <p class="card-text">Số lượng người dùng đã đăng ký trong hệ thống.</p>
                     </div>
@@ -25,11 +25,11 @@
 
             <!-- Số bài viết -->
             <div class="col-md-4 mb-4">
-                <div class="card text-white bg-success">
-                    <div class="card-header">
+                <div class="card text-white bg-success shadow-sm border-0">
+                    <div class="card-header bg-success text-center">
                         <h5 class="mb-0">Số Bài Viết</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h2 class="card-title">825</h2>
                         <p class="card-text">Tổng số bài viết đã được đăng trên hệ thống.</p>
                     </div>
@@ -38,11 +38,11 @@
 
             <!-- Số lượt truy cập -->
             <div class="col-md-4 mb-4">
-                <div class="card text-white bg-warning">
-                    <div class="card-header">
+                <div class="card text-white bg-warning shadow-sm border-0">
+                    <div class="card-header bg-warning text-center">
                         <h5 class="mb-0">Lượt Truy Cập</h5>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h2 class="card-title">32,540</h2>
                         <p class="card-text">Tổng số lượt truy cập trên toàn bộ hệ thống.</p>
                     </div>
@@ -53,7 +53,7 @@
         <!-- Biểu đồ thống kê -->
         <div class="row mb-4">
             <div class="col-12">
-                <h4 class="mb-3">Biểu đồ lượt truy cập theo tháng</h4>
+                <h4 class="mb-3 text-center">Biểu đồ lượt truy cập theo tháng</h4>
                 <canvas id="trafficChart"></canvas>
             </div>
         </div>
@@ -61,8 +61,8 @@
         <!-- Bảng chi tiết hệ thống -->
         <div class="row">
             <div class="col-12">
-                <h4 class="mb-3">Chi Tiết Hệ Thống</h4>
-                <table class="table table-bordered">
+                <h4 class="mb-3 text-center">Chi Tiết Hệ Thống</h4>
+                <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -109,7 +109,8 @@
                     data: [1200, 1900, 1500, 2200, 1800, 2500, 2700, 2400, 2600, 2800, 3000, 3200],
                     fill: false,
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    tension: 0.1
+                    tension: 0.1,
+                    borderWidth: 3
                 }]
             },
             options: {
@@ -124,7 +125,10 @@
                 },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 500
+                        }
                     }
                 }
             }

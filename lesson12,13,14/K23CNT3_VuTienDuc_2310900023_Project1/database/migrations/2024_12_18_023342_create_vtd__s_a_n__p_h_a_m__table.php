@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('vtd_SAN_PHAM', function (Blueprint $table) {
             $table->id();
-            $table->string('vtdMaSanPham',255)->unique();
-            $table->string('vtdTenSanPham',255);
-            $table->string('vtdHinhAnh',255);
-            $table->Integer('vtdSoLuong');
-            $table->float('vtdDonGia');
+            $table->string('vtdMaSanPham', 255)->unique();
+            $table->string('vtdTenSanPham', 255);
+            $table->string('vtdHinhAnh', 255);
+            $table->integer('vtdSoLuong');
+            $table->double('vtdDonGia', 15, 3); // Updated column type to double with precision 15,3
             $table->bigInteger('vtdMaLoai')->references('id')->on('vtd_LOAI_SAN_PHAM');
-            $table->string('vtdMoTa',1000);
+            $table->string('vtdMoTa', 1000);
             $table->tinyInteger('vtdTrangThai');
             $table->timestamps();
-            
         });
     }
 

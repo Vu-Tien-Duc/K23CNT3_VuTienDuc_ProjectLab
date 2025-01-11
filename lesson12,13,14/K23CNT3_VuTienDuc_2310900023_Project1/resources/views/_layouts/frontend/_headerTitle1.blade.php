@@ -35,7 +35,7 @@
           </a>
         </div>
         <div class="flex items-center space-x-4">
-          <a class="hover:underline" href="#"><i class="fas fa-bell"></i> Thông Báo</a>
+          <a class="mr-4 hover:underline" href="{{route('vtduser.thongbao')}}"><i class="fas fa-bell"></i> Thông Báo</a>
           <a class="hover:underline" href="vtd-user/support">
               <i class="fas fa-question-circle"></i> Hỗ Trợ
           </a>

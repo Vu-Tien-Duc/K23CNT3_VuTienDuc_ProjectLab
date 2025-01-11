@@ -3,44 +3,46 @@
 @section('title', 'Tạo Chi Tiết Hóa Đơn')
 
 @section('content-body')
-<div class="container">
-    <h1>Tạo Chi Tiết Hóa Đơn</h1>
+<div class="container py-6 max-w-3xl mx-auto">
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Tạo Chi Tiết Hóa Đơn</h1>
 
-    <!-- Form tạo chi tiết hóa đơn -->
-    <form action="{{ route('cthoadon.storecthoadon') }}" method="POST">
+    <form action="{{ route('cthoadon.storecthoadon') }}" method="POST" class="space-y-6">
         @csrf
 
         <!-- Hóa đơn ID -->
         <div class="form-group">
-            <label for="vtdHoaDonID" style="color: black">Hóa Đơn ID</label>
-            <input type="number" name="vtdHoaDonID" value="{{ $hoaDon->id }}" class="form-control" readonly>
+            <label for="vtdHoaDonID" class="text-lg text-gray-700 font-semibold">Hóa Đơn ID</label>
+            <input type="number" name="vtdHoaDonID" value="{{ $hoaDon->id }}" class="form-control p-3 border rounded-lg w-full" readonly>
         </div>
 
         <!-- Sản phẩm ID -->
         <div class="form-group">
-            <label for="vtdSanPhamID"  style="color: black">Sản Phẩm ID</label>
-            <input type="number" name="vtdSanPhamID" value="{{ $sanPham->id }}" class="form-control" readonly>
+            <label for="vtdSanPhamID" class="text-lg text-gray-700 font-semibold">Sản Phẩm ID</label>
+            <input type="number" name="vtdSanPhamID" value="{{ $sanPham->id }}" class="form-control p-3 border rounded-lg w-full" readonly>
         </div>
 
         <!-- Số lượng sản phẩm -->
         <div class="form-group">
-            <label for="vtdSoLuong"  style="color: black">Số Lượng</label>
-            <input type="number" name="vtdSoLuong" id="vtdSoLuong" value="{{ $soLuong }}" min="1" max="{{ $sanPham->vtdSoLuong }}" class="form-control" required>
+            <label for="vtdSoLuong" class="text-lg text-gray-700 font-semibold">Số Lượng</label>
+            <input type="number" name="vtdSoLuong" id="vtdSoLuong" value="{{ $soLuong }}" min="1" max="{{ $sanPham->vtdSoLuong }}" class="form-control p-3 border rounded-lg w-full" required>
         </div>
 
         <!-- Đơn Giá -->
         <div class="form-group">
-            <label for="vtdDonGiaMua"  style="color: black">Đơn Giá</label>
-            <input type="text" class="form-control" value="{{ number_format($sanPham->vtdDonGia, 0, ',', '.') }} VND" disabled>
+            <label for="vtdDonGiaMua" class="text-lg text-gray-700 font-semibold">Đơn Giá</label>
+            <input type="text" class="form-control p-3 border rounded-lg w-full" value="{{ number_format($sanPham->vtdDonGia, 0, ',', '.') }} VND" disabled>
         </div>
 
         <!-- Thành Tiền (tính toán từ Số Lượng và Đơn Giá) -->
         <div class="form-group">
-            <label for="vtdThanhTien"  style="color: black">Thành Tiền</label>
-            <input type="text" class="form-control" id="vtdThanhTien" value="{{ number_format($sanPham->vtdDonGia * $soLuong, 0, ',', '.') }} VND" disabled>
+            <label for="vtdThanhTien" class="text-lg text-gray-700 font-semibold">Thành Tiền</label>
+            <input type="text" class="form-control p-3 border rounded-lg w-full" id="vtdThanhTien" value="{{ number_format($sanPham->vtdDonGia * $soLuong, 0, ',', '.') }} VND" disabled>
         </div>
 
-        <button type="submit" class="btn btn-primary">Lưu Chi Tiết Hóa Đơn</button>
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition duration-300">
+            Lưu Chi Tiết Hóa Đơn
+        </button>
     </form>
 </div>
 

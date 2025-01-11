@@ -37,8 +37,12 @@ class vtd_HOA_DON extends Model
 
     // Quan hệ với bảng vtd_CT_HOA_DON
     public function chiTietHoaDon()
-    {
-        return $this->hasMany(vtd_CT_HOA_DON::class, 'vtdHoaDonID', 'id');
-    }
+{
+    return $this->hasMany(vtd_CT_HOA_DON::class, 'vtdHoaDonID', 'id');
+}
+
+
+
+
     
 }

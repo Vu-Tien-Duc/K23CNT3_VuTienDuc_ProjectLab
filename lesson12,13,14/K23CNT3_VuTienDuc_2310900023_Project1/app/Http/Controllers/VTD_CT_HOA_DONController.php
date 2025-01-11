@@ -133,7 +133,7 @@ public function cthoadonshow($hoaDonId, $sanPhamId)
         $validated = $request->validate([
             'vtdSanPhamID' => 'required|exists:vtd_SAN_PHAM,id',
             'vtdHoaDonID' => 'required|exists:vtd_HOA_DON,id',
-            'vtdSoLuong' => 'required|integer|min:1',
+          'vtdSoLuong' => 'required|integer|min:1|max:' . $request->vtdSanPhamID,
         ]);
     
         // Lấy thông tin sản phẩm và hóa đơn

@@ -12,15 +12,55 @@
         }
         .form-container {
             background-color: #ffffff; /* White background for the form */
-            border-radius: 8px; /* Rounded corners for the form */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the form */
-            padding: 30px; /* Padding inside the form */
+            border-radius: 12px; /* Rounded corners for the form */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow for the form */
+            padding: 40px 30px; /* Padding inside the form */
+            max-width: 400px;
+            margin: auto;
+        }
+        .form-container h2 {
+            font-size: 2rem;
+            color: #495057;
+            margin-bottom: 30px;
         }
         .form-group label {
-            font-weight: bold;
+            font-weight: 600;
+            color: #495057;
+        }
+        .form-group input {
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 1rem;
         }
         .form-group .is-invalid {
             border-color: #e74a3b;
+        }
+        .invalid-feedback {
+            font-size: 0.875rem;
+            color: #e74a3b;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .mt-3 a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .mt-3 a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>

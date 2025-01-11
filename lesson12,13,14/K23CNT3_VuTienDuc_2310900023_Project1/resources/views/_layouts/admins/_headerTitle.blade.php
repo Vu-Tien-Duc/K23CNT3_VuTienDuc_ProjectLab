@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Quản Trị</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Set the background color for the entire body */
         body {
             background-color: #f4f4f9; /* Light background color for the body */
+            font-family: 'Arial', sans-serif;
         }
 
         /* Set a custom background color for the header */
         header {
             background-color: #343a40; /* Dark background for the header */
+            color: white;
         }
 
         /* Add a hover effect for navigation links */
@@ -21,18 +24,18 @@
             border-radius: 5px;
         }
 
-        /* Add custom styles for the logo */
+        /* Custom logo styling */
         .logo img {
             max-height: 40px;
+            width: auto;
         }
 
-        /* Optional: Customize the admin user greeting */
+        /* Admin user greeting styling */
         .d-flex.align-items-center {
             font-size: 14px;
-            color: white;
         }
 
-        /* Customize the logout link */
+        /* Styling for logout link */
         .d-flex a {
             font-size: 14px;
             color: white;
@@ -45,7 +48,7 @@
 
         /* Styling the search form */
         .search-form {
-            max-width: 800px; /* Set maximum width of the form */
+            max-width: 800px;
             width: 100%;
             margin: 0 auto; /* Center the form horizontally */
         }
@@ -58,7 +61,7 @@
         .search-form .form-control {
             border-radius: 30px 0 0 30px; /* Rounded corners for the input */
             padding: 12px 15px;
-            font-size: 16px; /* Larger font for better readability */
+            font-size: 16px;
         }
 
         .search-form .btn {

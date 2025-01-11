@@ -16,8 +16,8 @@ return new class extends Migration
             $table->bigInteger('vtdHoaDonID')->references('id')->on('vtd_HOA_DON');
             $table->bigInteger('vtdSanPhamID')->references('id')->on('vtd_SAN_PHAM');
             $table->integer('vtdSoLuongMua');
-            $table->float('vtdDonGiaMua');
-            $table->double('vtdThanhTien');
+            $table->double('vtdDonGiaMua',15,3);
+            $table->double('vtdThanhTien',15,3);
             $table->tinyInteger('vtdTrangThai');
             $table->timestamps();
         });
