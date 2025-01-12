@@ -41,6 +41,10 @@
                     <p class="card-text">
                         <b>Mã Loại:</b> {{ $vtdsanpham->vtdMaLoai }}
                     </p>
+                        <!-- Mô Tả -->
+                    <p class="card-text">
+                        <b>Mô Tả:</b> {{ $vtdsanpham->vtdMoTa }}
+                    </p>
 
                     <!-- Trạng thái -->
                     <p class="card-text">

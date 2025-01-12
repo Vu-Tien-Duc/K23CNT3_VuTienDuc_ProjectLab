@@ -103,55 +103,57 @@ class VTD_SAN_PHAMController extends Controller
      
 
      // Controller
-public function vtdCreateSubmit(Request $request)
-{
-
-    // Validate input
-    $validatedData = $request->validate([
-        'vtdMaSanPham' => 'required|unique:vtd_SAN_PHAM,vtdMaSanPham',
-        'vtdTenSanPham' => 'required|string|max:255',
-        'vtdHinhAnh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Kiểm tra hình ảnh và loại định dạng
-        'vtdSoLuong' => 'required|numeric|min:1',
-        'vtdDonGia' => 'required|numeric',
-        'vtdMaLoai' => 'required|exists:vtd_LOAI_SAN_PHAM,id',
-        'vtdTrangThai' => 'required|in:0,1',
-    ]);
-
-    // Khởi tạo đối tượng vtd_SAN_PHAM và lưu thông tin vào cơ sở dữ liệu
-    $vtdsanpham = new vtd_SAN_PHAM;
-    $vtdsanpham->vtdMaSanPham = $request->vtdMaSanPham;
-    $vtdsanpham->vtdTenSanPham = $request->vtdTenSanPham;
-
-    // Kiểm tra nếu có tệp hình ảnh
-    if ($request->hasFile('vtdHinhAnh')) {
-        // Lấy tệp hình ảnh
-        $file = $request->file('vtdHinhAnh');
-
-        // Kiểm tra nếu tệp hợp lệ
-        if ($file->isValid()) {
-            // Tạo tên tệp dựa trên mã sản phẩm
-            $fileName = $request->vtdMaSanPham . '.' . $file->extension();
-
-            // Lưu tệp vào thư mục public/img/san_pham
-            $file->storeAs('public/img/san_pham', $fileName); // Lưu tệp vào thư mục storage/app/public/img/san_pham
-
-            // Lưu đường dẫn vào cơ sở dữ liệu
-            $vtdsanpham->vtdHinhAnh = 'img/san_pham/' . $fileName; // Lưu đường dẫn tương đối trong CSDL
-        }
-    }
-
-    // Lưu các thông tin còn lại vào cơ sở dữ liệu
-    $vtdsanpham->vtdSoLuong = $request->vtdSoLuong;
-    $vtdsanpham->vtdDonGia = $request->vtdDonGia;
-    $vtdsanpham->vtdMaLoai = $request->vtdMaLoai;
-    $vtdsanpham->vtdTrangThai = $request->vtdTrangThai;
-
-    // Lưu dữ liệu vào cơ sở dữ liệu
-    $vtdsanpham->save();
-
-    // Chuyển hướng người dùng về trang danh sách sản phẩm
-    return redirect()->route('vtdadims.vtdsanpham');
-}
+     public function vtdCreateSubmit(Request $request)
+     {
+         // Validate input
+         $validatedData = $request->validate([
+             'vtdMaSanPham' => 'required|unique:vtd_SAN_PHAM,vtdMaSanPham',
+             'vtdTenSanPham' => 'required|string|max:255',
+             'vtdHinhAnh' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+             'vtdSoLuong' => 'required|numeric|min:1',
+             'vtdDonGia' => 'required|numeric',
+             'vtdMaLoai' => 'required|exists:vtd_LOAI_SAN_PHAM,id',
+             'vtdTrangThai' => 'required|in:0,1',
+             'vtdMoTa' => 'nullable|string|max:1000', // Validation for vtdMoTa
+         ]);
+     
+         // Khởi tạo đối tượng vtd_SAN_PHAM và lưu thông tin vào cơ sở dữ liệu
+         $vtdsanpham = new vtd_SAN_PHAM;
+         $vtdsanpham->vtdMaSanPham = $request->vtdMaSanPham;
+         $vtdsanpham->vtdTenSanPham = $request->vtdTenSanPham;
+         $vtdsanpham->vtdMoTa = $request->vtdMoTa; // Save the description
+     
+         // Kiểm tra nếu có tệp hình ảnh
+         if ($request->hasFile('vtdHinhAnh')) {
+             // Lấy tệp hình ảnh
+             $file = $request->file('vtdHinhAnh');
+     
+             // Kiểm tra nếu tệp hợp lệ
+             if ($file->isValid()) {
+                 // Tạo tên tệp dựa trên mã sản phẩm
+                 $fileName = $request->vtdMaSanPham . '.' . $file->extension();
+     
+                 // Lưu tệp vào thư mục public/img/san_pham
+                 $file->storeAs('public/img/san_pham', $fileName);
+     
+                 // Lưu đường dẫn vào cơ sở dữ liệu
+                 $vtdsanpham->vtdHinhAnh = 'img/san_pham/' . $fileName;
+             }
+         }
+     
+         // Lưu các thông tin còn lại vào cơ sở dữ liệu
+         $vtdsanpham->vtdSoLuong = $request->vtdSoLuong;
+         $vtdsanpham->vtdDonGia = $request->vtdDonGia;
+         $vtdsanpham->vtdMaLoai = $request->vtdMaLoai;
+         $vtdsanpham->vtdTrangThai = $request->vtdTrangThai;
+     
+         // Lưu dữ liệu vào cơ sở dữ liệu
+         $vtdsanpham->save();
+     
+         // Chuyển hướng người dùng về trang danh sách sản phẩm
+         return redirect()->route('vtdadims.vtdsanpham');
+     }
+     
 
 //delete    -----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -181,47 +183,50 @@ public function vtdEdit($id)
 
 
     public function vtdEditSubmit(Request $request, $id)
-{
-    // Validate dữ liệu
-    $request->validate([
-        'vtdMaSanPham' => 'required|max:20',
-        'vtdTenSanPham' => 'required|max:255',
-        'vtdHinhAnh' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'vtdSoLuong' => 'required|integer',
-        'vtdDonGia' => 'required|numeric',
-        'vtdMaLoai' => 'required|max:10',
-        'vtdTrangThai' => 'required|in:0,1',
-    ]);
-
-    // Tìm sản phẩm cần chỉnh sửa
-    $vtdsanpham = VTD_SAN_PHAM::findOrFail($id);
-
-    // Cập nhật thông tin sản phẩm
-    $vtdsanpham->vtdMaSanPham = $request->vtdMaSanPham;
-    $vtdsanpham->vtdTenSanPham = $request->vtdTenSanPham;
-    $vtdsanpham->vtdSoLuong = $request->vtdSoLuong;
-    $vtdsanpham->vtdDonGia = $request->vtdDonGia;
-    $vtdsanpham->vtdMaLoai = $request->vtdMaLoai;
-    $vtdsanpham->vtdTrangThai = $request->vtdTrangThai;
-
-    // Kiểm tra nếu có hình ảnh mới
-    if ($request->hasFile('vtdHinhAnh')) {
-        // Kiểm tra và xóa hình ảnh cũ nếu tồn tại
-        if ($vtdsanpham->vtdHinhAnh && Storage::disk('public')->exists('img/san_pham/' . $vtdsanpham->vtdHinhAnh)) {
-            // Xóa file cũ nếu tồn tại
-            Storage::disk('public')->delete('img/san_pham/' . $vtdsanpham->vtdHinhAnh);
+    {
+        // Validate dữ liệu
+        $request->validate([
+            'vtdMaSanPham' => 'required|max:20',
+            'vtdTenSanPham' => 'required|max:255',
+            'vtdHinhAnh' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'vtdSoLuong' => 'required|integer',
+            'vtdDonGia' => 'required|numeric',
+            'vtdMaLoai' => 'required|max:10',
+            'vtdTrangThai' => 'required|in:0,1',
+            'vtdMoTa' => 'nullable|string|max:1000', // Validation for vtdMoTa
+        ]);
+    
+        // Tìm sản phẩm cần chỉnh sửa
+        $vtdsanpham = VTD_SAN_PHAM::findOrFail($id);
+    
+        // Cập nhật thông tin sản phẩm
+        $vtdsanpham->vtdMaSanPham = $request->vtdMaSanPham;
+        $vtdsanpham->vtdTenSanPham = $request->vtdTenSanPham;
+        $vtdsanpham->vtdMoTa = $request->vtdMoTa; // Update the description
+        $vtdsanpham->vtdSoLuong = $request->vtdSoLuong;
+        $vtdsanpham->vtdDonGia = $request->vtdDonGia;
+        $vtdsanpham->vtdMaLoai = $request->vtdMaLoai;
+        $vtdsanpham->vtdTrangThai = $request->vtdTrangThai;
+    
+        // Kiểm tra nếu có hình ảnh mới
+        if ($request->hasFile('vtdHinhAnh')) {
+            // Kiểm tra và xóa hình ảnh cũ nếu tồn tại
+            if ($vtdsanpham->vtdHinhAnh && Storage::disk('public')->exists('img/san_pham/' . $vtdsanpham->vtdHinhAnh)) {
+                // Xóa file cũ nếu tồn tại
+                Storage::disk('public')->delete('img/san_pham/' . $vtdsanpham->vtdHinhAnh);
+            }
+            // Lưu hình ảnh mới
+            $imagePath = $request->file('vtdHinhAnh')->store('img/san_pham', 'public');
+            $vtdsanpham->vtdHinhAnh = $imagePath;
         }
-        // Lưu hình ảnh mới
-        $imagePath = $request->file('vtdHinhAnh')->store('img/san_pham', 'public');
-        $vtdsanpham->vtdHinhAnh = $imagePath;
+    
+        // Lưu thông tin sản phẩm đã chỉnh sửa
+        $vtdsanpham->save();
+    
+        // Redirect về trang danh sách sản phẩm
+        return redirect()->route('vtdadims.vtdsanpham')->with('success', 'Sản phẩm đã được cập nhật thành công.');
     }
-
-    // Lưu thông tin sản phẩm đã chỉnh sửa
-    $vtdsanpham->save();
-
-    // Redirect về trang danh sách sản phẩm
-    return redirect()->route('vtdadims.vtdsanpham')->with('success', 'Sản phẩm đã được cập nhật thành công.');
-}
+    
 
     
 

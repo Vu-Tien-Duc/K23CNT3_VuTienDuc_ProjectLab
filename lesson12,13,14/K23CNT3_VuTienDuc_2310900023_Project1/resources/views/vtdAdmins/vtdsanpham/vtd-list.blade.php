@@ -25,6 +25,7 @@
                     <th>Số Lượng</th>
                     <th>Đơn Giá</th>
                     <th>Mã Loại</th>
+                    <th>Mô Tả</th>
                     <th>Trạng Thái</th>
                     <th>Chức Năng</th>
                 </tr>
@@ -41,6 +42,8 @@
                     <td>{{ $item->vtdSoLuong }}</td>
                     <td>{{ number_format($item->vtdDonGia, 0, ',', '.') }} VND</td>
                     <td>{{ $item->vtdMaLoai }}</td>
+                    <td>{{ \Str::limit($item->vtdMoTa, 50) }}</td>
+
                     <td>
                         @if($item->vtdTrangThai == 0)
                             <span class="badge bg-success">Hiển Thị</span>
@@ -68,7 +71,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="9" class="text-center text-muted">
+                    <td colspan="10" class="text-center text-muted">
                         Chưa có thông tin sản phẩm
                     </td>
                 </tr>

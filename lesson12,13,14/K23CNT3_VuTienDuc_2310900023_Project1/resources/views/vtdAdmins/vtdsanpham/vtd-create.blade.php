@@ -65,6 +65,14 @@
                                 @enderror
                             </div>
                             
+                            <!-- New Product Description (Mô Tả) Field -->
+                            <div class="mb-3">
+                                <label for="vtdMoTa" class="form-label">Mô Tả Sản Phẩm</label>
+                                <textarea class="form-control" id="vtdMoTa" name="vtdMoTa" rows="4">{{ old('vtdMoTa') }}</textarea>
+                                @error('vtdMoTa')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
                             <div class="mb-3">
                                 <label for="vtdTrangThai" class="form-label">Trạng Thái</label>

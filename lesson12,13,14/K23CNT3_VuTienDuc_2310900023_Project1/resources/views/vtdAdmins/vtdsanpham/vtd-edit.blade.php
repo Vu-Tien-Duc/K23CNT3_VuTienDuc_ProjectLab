@@ -80,6 +80,14 @@
                             @enderror
                         </div>
 
+                        <!-- Mô Tả Sản Phẩm -->
+                        <div class="mb-3">
+                            <label for="vtdMoTa" class="form-label">Mô Tả Sản Phẩm</label>
+                            <textarea class="form-control" id="vtdMoTa" name="vtdMoTa" rows="4">{{ old('vtdMoTa', $vtdsanpham->vtdMoTa) }}</textarea>
+                            @error('vtdMoTa')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <!-- Trạng thái -->
                         <div class="mb-3">
@@ -95,6 +103,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
                         <!-- Nút lưu -->
                         <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                     </form>
